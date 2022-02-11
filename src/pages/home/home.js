@@ -1,7 +1,7 @@
-import SearchBar from "../../components/searchBar/searchBar";
+import Topbar from "../../components/topbar/Topbar";
 
 export default function Home(){
     return(
-        <SearchBar/>
+        <Topbar/>
     )
 }

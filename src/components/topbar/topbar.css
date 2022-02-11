@@ -1,0 +1,72 @@
+
+.topbarPanel{
+    height: 50px;
+    width: 100%;
+    background-color: #9783f0;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.logo{
+    font-size: 24px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.searchbar{
+    width: 98%;
+    height: 30px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.searchIcon{
+    margin-left: 10px;
+}
+
+.searchInput{
+    border: none;
+    width: 80%;
+}
+
+.searchInput :focus{
+    outline: none;
+}
+
+.topLeft{
+    flex: 3
+}
+
+.topCenter{
+    flex: 5
+}
+
+.rank{
+    font-size: 30px !important;
+    cursor: pointer;
+    color:rgb(240, 82, 9);
+    background-color: white;
+    border-radius: 30px;
+}
+
+.HomeIcon{
+    position: absolute;
+    right: 20px;
+    bottom: 5px;
+    color: white;
+    font-size: 40px !important;
+    cursor: pointer;
+}
+
+.topRight{
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
