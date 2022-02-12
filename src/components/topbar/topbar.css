@@ -1,6 +1,6 @@
 
 .topbarPanel{
-    height: 50px;
+    height: 60px;
     width: 100%;
     background-color: #9783f0;
     display: flex;
@@ -47,22 +47,16 @@
     flex: 5
 }
 
-.rank{
-    font-size: 30px !important;
-    cursor: pointer;
-    color:rgb(240, 82, 9);
-    background-color: white;
-    border-radius: 30px;
-}
 
 .PersonIcon{
     color: white;
-    font-size: 25px !important;
+    font-size: 30px !important;
     cursor: pointer;
-    margin-left: 200px;
+    margin-left: 250px;
 }
 
 .username{
+    font-size: 17px;
     margin-left: 10px;
     cursor: pointer;
     color: white;

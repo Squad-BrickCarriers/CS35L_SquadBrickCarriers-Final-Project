@@ -18,7 +18,7 @@
 
 .postIcon{
     margin-left: 20px;
-    
+    font-size: 30px !important;
 }
 
 .shareInput{
@@ -44,7 +44,9 @@
 
 .option{
     margin-left: 20px;
-    font-size: 15px;
+    color: rgb(90, 88, 88);
+    align-items: center;
+    font-size: 17px;
 }
 
 .checkbox{
@@ -56,5 +58,6 @@
     border-radius: 5px;
     font-weight: 500;
     margin-right: 20px;
+    background-color: white;
     cursor: pointer;
 }

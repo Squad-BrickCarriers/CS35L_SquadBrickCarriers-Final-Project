@@ -1,5 +1,5 @@
 import "./share.css"
-import { Email } from "@material-ui/icons"
+import { MailOutline } from "@material-ui/icons"
 
 export default function Share(){
     return(
@@ -7,7 +7,7 @@ export default function Share(){
             <div className="shareWrapper">
                 <div className="shareTop">
                     <div className="username"></div>
-                    <Email className="postIcon" htmlColor="purple"/>
+                    <MailOutline className="postIcon" htmlColor="purple"/>
                     <input 
                     placeholder="Share what's in your mind!" 
                     className="shareInput"

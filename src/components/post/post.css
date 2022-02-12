@@ -1,0 +1,85 @@
+.rank{
+    font-size: 30px !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+    color:rgb(240, 82, 9);
+    background-color: white;
+    border-radius: 30px;
+}
+
+.postPanel{
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+    -webkit-box-shadow: 0px 0px 16px 6px rgba(207,207,207,0.69); 
+    box-shadow: 0px 0px 16px 6px rgba(207,207,207,0.69);
+}
+
+.postPanelTop{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: space-between;
+    background-color: #aa9bf0;
+}
+
+.panelText{
+    font-size: 15px;
+    margin-left: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.postWrapper{
+    padding: 20px;
+}
+
+.post{
+    width: 100%;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 16px 6px rgba(207,207,207,0.69); 
+    box-shadow: 0px 0px 16px 6px rgba(207,207,207,0.69);
+}
+
+.postTop{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.postName{
+    font-size: 15px;
+    font-weight: 550;
+}
+
+.postDate{
+    font-size: 15px;
+}
+
+.postText{
+    font-size: 15px;
+}
+
+.postBottom{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.like{
+    width: 20px;
+    height: 20px;
+}
+
+.postBottomRight{
+    margin-top: 10px;
+    align-items: center;
+}
+
+.likeCount{
+    font-size: 12px;
+}
