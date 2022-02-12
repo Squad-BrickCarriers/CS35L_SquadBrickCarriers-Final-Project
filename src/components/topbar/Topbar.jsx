@@ -1,5 +1,5 @@
 import "./topbar.css";
-import {Search, Home, Whatshot} from "@material-ui/icons"
+import {Search, Person, Whatshot} from "@material-ui/icons"
 
 export default function Topbar(){
     return(
@@ -18,7 +18,8 @@ export default function Topbar(){
             </div>
             <div className="topRight">
                 <Whatshot className="rank"/>
-                <span><Home className="HomeIcon"/></span>
+                <Person className="PersonIcon"/>
+                <span className="username">user-name</span>
             </div>
         </div>
     )
