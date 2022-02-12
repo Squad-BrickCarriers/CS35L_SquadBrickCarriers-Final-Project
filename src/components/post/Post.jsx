@@ -1,5 +1,4 @@
 import "./post.css"
-import {Whatshot} from "@material-ui/icons"
 
 export default function Post(){
     return( 
@@ -16,7 +15,7 @@ export default function Post(){
                     <div className="postBottomLeft"></div>
                     <div className="postBottomRight">
                         <img className="like" 
-                        src="assets/heart.png" alt=""
+                        src="assets/likeIcon.png" alt=""
                         />
                         <span className="likeCount"># people liked</span>
                     </div>
