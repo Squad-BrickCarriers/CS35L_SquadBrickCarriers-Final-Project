@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 // Connect to DB
 mongoose.connect(
     process.env.DB_CONNECTION, 
-    { useNewUrlParser: true}, 
+    { useNewUrlParser: true }, 
     () => {
     console.log('Connected to DB')
 })
