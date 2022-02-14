@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/Post');
+const {Post, postValidation} = require('../models/Post');
 
 // Get all posts
 router.get('/', async (req, res) => {
@@ -24,6 +24,9 @@ router.get('/:postId', async (req, res) => {
 
 // Add a post
 router.post('/', async (req, res) => {
+    const { error } = postValidation(req.body);
+    if (error) return res.json(error);
+
     const post = new Post({
         title: req.body.title,
         description: req.body.description
