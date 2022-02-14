@@ -1,3 +1,4 @@
+const config = require('config');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
@@ -7,12 +8,19 @@ require('dotenv/config');
 const app = express();
 const postRoute = require('./routes/posts');
 const userRoute = require('./routes/users')
+const auth = require('./routes/auth');
+
+if (!config.get('jwtPrivateKey')){
+    console.error('FATAL ERROR: jwtPrivateKey is not defined.');
+    process.exit(1);
+}
 
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/posts', postRoute);
-app.use('/users', userRoute)
+app.use('/users', userRoute);
+app.use('/auth', auth);
 
 // Main route
 app.get('/', (req, res) => {

@@ -13,14 +13,14 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true,
         minlength: 8,
-        maxlength: 20
+        maxlength: 300
     }
 })
 
 const userValidation = user => {
     const schema = Joi.object({
         name: Joi.string().required().min(6).max(20),
-        password: Joi.string().required().min(8).max(20)
+        password: Joi.string().required().min(8).max(300)
     });
 
     return schema.validate(user);
