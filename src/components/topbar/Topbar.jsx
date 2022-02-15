@@ -1,5 +1,6 @@
 import "./topbar.css";
-import {Search, Person} from "@material-ui/icons"
+import SearchBar from "../searchBar/SearchBar";
+import {Person} from "@material-ui/icons"
 
 export default function Topbar(){
     return(
@@ -8,13 +9,7 @@ export default function Topbar(){
                 <span className="logo">TreeHole</span>
             </div>
             <div className="topCenter">
-                <div className="searchbar">
-                    <Search className="searchIcon"/>
-                    <input 
-                    placeholder="Search for posts" 
-                    className="searchInput"
-                    />
-                </div>
+                <SearchBar/>
             </div>
             <div className="topRight">
                 <Person className="PersonIcon"/>
