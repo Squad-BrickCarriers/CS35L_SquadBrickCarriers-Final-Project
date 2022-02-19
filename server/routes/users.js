@@ -1,3 +1,7 @@
+
+const auth = require('../middleware/auth')
+const config = require('config');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const _= require('lodash');
 const express = require('express');
@@ -16,13 +20,9 @@ router.get('/', async (req, res) => {
 })
 
 // Select a user
-router.get('/:userId', async (req, res) => {
-    try {
-        const user = await User.findById(req.params.userId);
-        res.json(user);
-    } catch (err) {
-        res.json({ message: err });
-    }
+router.get('/me', auth, async (req, res) => {
+    const user = await User.findById(req.User._id).select('-password');
+    res.send(user);
 })
 
 // Add a user
@@ -40,7 +40,9 @@ router.post('/signup', async (req, res) => {
 
     try {
         const savedUser = await user.save();
-        res.send(_.pick(savedUser, ['_id', 'name']));
+        const token = jwt.sign({ _id: user._id}, config.get('jwtPrivateKey'));
+        res.header('x-auth-token', token)
+           .send(_.pick(savedUser, ['_id', 'name']));
     } catch (err) {
         res.json({ message: err });
     }
