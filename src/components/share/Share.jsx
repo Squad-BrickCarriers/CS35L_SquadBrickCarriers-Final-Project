@@ -1,7 +1,10 @@
 import "./share.css"
 import { MailOutline } from "@material-ui/icons"
+import { useState } from "react"
 
 export default function Share(){
+    const[anonymous, setAnonymous] = useState(false)
+
     return(
         <div className="share">
             <div className="shareWrapper">
