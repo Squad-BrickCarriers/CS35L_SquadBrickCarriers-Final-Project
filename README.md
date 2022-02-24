@@ -1,4 +1,22 @@
-# Getting Started with Create React App
+<div align="center">
+
+# Treehole
+<!-- logo? -->
+
+Treehole is a **xxx**.
+
+It xxx.<br />
+xxx
+
+[Getting started](#getting-started) •
+[Credit](#credit) 
+
+</div>
+
+<!-- Core features -->
+- xxx
+
+# Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -69,5 +87,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-# Reference:
-<!-- https://youtu.be/zM93yZ_8SvE -->
+# Credit
+
+## Arthurs
+
+- [@hanchen-huang](https://github.com/hanchen-huang)
+- [@lelandjin](https://github.com/LelandJin)
+- [@Yiwu-Yu](https://github.com/Liwu-Yu)
+- [@Wenshu-Zhang](https://github.com/Wenshu-Zhang)
+
+### Reference:
+- https://youtu.be/zM93yZ_8SvE
