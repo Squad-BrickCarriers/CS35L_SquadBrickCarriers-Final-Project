@@ -19,7 +19,7 @@ export default function Login() {
                     <input placeholder="Password" className="loginInput" />
                     <button className="loginButton">Log in</button>
                     <span className="loginForgot">Forgot Password?</span>
-                    <botton className="loginSignupButton">Sign Up</botton>
+                    <button className="loginSignupButton">Sign Up</button>
                 </div>
             </div>
         </div>
