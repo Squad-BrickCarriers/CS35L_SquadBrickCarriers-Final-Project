@@ -1,4 +1,5 @@
 import "./signup.css";
+import { Link } from "react-router-dom";
 
 export default function Signup() {
     return (
@@ -16,10 +17,17 @@ export default function Signup() {
                         <input placeholder="Email" className="loginInput" />
                         <input placeholder="Password" className="loginInput" />
                         <input placeholder="Password Again" className="loginInput" />
+
+                        {/* Send signup request to backend */}
                         <button className="loginButton">Sign Up</button>
-                        <button className="loginRegisterButton">
-                            Log into Account
-                        </button>
+
+                        <Link to="/" >
+                            {/*!FIXME goes to homepage for now */}
+                            <button className="loginRegisterButton">
+                                Log into Account
+                            </button>
+                        </Link>
+
                     </div>
                 </div>
             </div>

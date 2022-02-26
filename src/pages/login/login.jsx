@@ -3,6 +3,7 @@
 // import Feed from "../../components/feed/Feed";
 // import Scrollbar from "../../components/scrollbar/Scrollbar";
 import "./login.css"
+import { Link } from "react-router-dom";
 
 export default function Login() {
     return (
@@ -17,9 +18,21 @@ export default function Login() {
                 <div className="loginBox">
                     <input placeholder="Email" className="loginInput" />
                     <input placeholder="Password" className="loginInput" />
-                    <button className="loginButton">Log in</button>
+                    <Link to="/"className="loginButton" >
+                        <button className="loginButton">
+                            Login
+                        </button>
+                    </Link>
+
+                     {/* FIXME add Forgot Password page */}
                     <span className="loginForgot">Forgot Password?</span>
-                    <button className="loginSignupButton">Sign Up</button>
+
+                    {/* FIXME do the signup format */}
+                    <Link to="/signup" >
+                        <button className="loginSignupButton" >
+                            Sign Up
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
