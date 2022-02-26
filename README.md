@@ -98,3 +98,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Reference:
 - https://youtu.be/zM93yZ_8SvE
+- https://stackoverflow.com/questions/50780983/how-can-i-rename-index-html-in-a-create-react-app-project
