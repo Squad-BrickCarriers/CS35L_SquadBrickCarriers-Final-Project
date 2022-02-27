@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const {Post, postValidation} = require('../models/Post');
 
+// Functions; request handling 
+
 // Get all posts
 router.get('/', async (req, res) => {
     try {

@@ -1,5 +1,5 @@
 import "./topbar.css";
-import SearchBar from "../searchBar/SearchBar";
+import SearchBar from "../searchBar/searchBar";
 import { Person } from "@material-ui/icons"
 import { Link } from "react-router-dom";
 

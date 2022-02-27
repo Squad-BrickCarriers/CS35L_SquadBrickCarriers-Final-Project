@@ -21,7 +21,7 @@ export default function Signup() {
                         {/* Send signup request to backend */}
                         <button className="loginButton">Sign Up</button>
 
-                        <Link to="/" >
+                        <Link to="/" style={{ textDecoration: 'none' }} >
                             {/*!FIXME goes to homepage for now */}
                             <button className="loginRegisterButton">
                                 Log into Account

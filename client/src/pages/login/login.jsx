@@ -18,7 +18,7 @@ export default function Login() {
                 <div className="loginBox">
                     <input placeholder="Email" className="loginInput" />
                     <input placeholder="Password" className="loginInput" />
-                    <Link to="/"className="loginButton" >
+                    <Link to="/"className="loginButton" style={{ textDecoration: 'none' }} >
                         <button className="loginButton">
                             Login
                         </button>
@@ -28,7 +28,7 @@ export default function Login() {
                     <span className="loginForgot">Forgot Password?</span>
 
                     {/* FIXME do the signup format */}
-                    <Link to="/signup" >
+                    <Link to="/signup" style={{ textDecoration: 'none' }} >
                         <button className="loginSignupButton" >
                             Sign Up
                         </button>

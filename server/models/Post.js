@@ -1,6 +1,7 @@
+// everything you need in the post
+
 const mongoose = require('mongoose');
 const Joi = require('joi');
-
 const PostSchema = mongoose.Schema({
     title: {
         type: String,

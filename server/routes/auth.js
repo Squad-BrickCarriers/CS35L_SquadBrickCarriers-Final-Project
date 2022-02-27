@@ -1,3 +1,4 @@
+// use when logging in
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -5,7 +6,6 @@ const _= require('lodash');
 const express = require('express');
 const router = express.Router();
 const { User, userValidation} = require('../models/User');
-
 
 
 router.post('/', async (req, res) => {

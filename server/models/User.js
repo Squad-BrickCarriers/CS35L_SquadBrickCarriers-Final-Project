@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
+// like a class
 const UserSchema = mongoose.Schema({
     name: {
         type: String,
