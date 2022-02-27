@@ -6,7 +6,7 @@ import "./ranking.css"
 import { Link } from "react-router-dom";
 import sortedList from "../../components/sortedList/sortedList";
 
-
+// Ranking page of posts
 export default function Ranking() {
     return (
         <div className="Ranking">

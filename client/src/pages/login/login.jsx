@@ -5,6 +5,7 @@
 import "./login.css"
 import { Link } from "react-router-dom";
 
+// Login page
 export default function Login() {
     return (
         <div className="login">
