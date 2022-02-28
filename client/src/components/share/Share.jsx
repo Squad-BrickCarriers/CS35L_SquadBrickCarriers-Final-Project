@@ -2,9 +2,10 @@ import "./share.css"
 import { MailOutline } from "@material-ui/icons"
 import { useState } from "react"
 
-export default function Share(share){
+export default function Share({share}){
     const [description, setDescription] = useState("");
     const[isAnonymous, setAnonymous] = useState(false)
+
 
     const descHandler = (desc)=>{
         setDescription(desc.target.value);
@@ -26,7 +27,7 @@ export default function Share(share){
                     <MailOutline className="postIcon" htmlColor="purple"/>
                     <input 
                     type="text"
-                    id ="newPostDesc"
+                    id ="newPost"
                     value={description}
                     placeholder="Share what's in your mind!" 
                     onChange={descHandler}
@@ -44,7 +45,7 @@ export default function Share(share){
                         className="checkbox">
                         </input>
                     </div>
-                    <button className="shareButton">post</button>
+                    <button className="shareButton" type="submit">post</button>
                 </div>
             </div>
         </form>

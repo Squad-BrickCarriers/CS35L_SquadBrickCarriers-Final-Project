@@ -8,8 +8,9 @@ export default function Topbar() {
         <div className="topbarPanel">
             <div className="topLeft">
                 {/*Refresh on click?*/}
-                <span className="logo">TreeHole</span>
-
+                <Link to="/" style={{textDecoration: "none"}}>
+                    <span className="logo">TreeHole</span>
+                </Link>
             </div>
             <div className="topCenter">
                 <SearchBar />
@@ -22,7 +23,7 @@ export default function Topbar() {
                 </Link>
 
                 {/* !FIXME Link to personal profile or login page */}
-                <Link to="/login" >
+                <Link to="/login" style={{textDecoration: "none"}}>
                     <span className="username">user-name</span>
                 </Link>
             </div>

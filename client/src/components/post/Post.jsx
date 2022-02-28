@@ -1,24 +1,35 @@
 import "./post.css"
-import { Users } from "../../dummydata"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
 
 export default function Post({post}){
     const [like, setLike] = useState(post.like)
     const [isLiked, setIsLiked] = useState(false)
+    const [user, setUser] = useState({})
 
     const likeHandler=()=>{
         setLike(isLiked ? like-1 : like+1)
         setIsLiked(!isLiked)
     }
 
+    useEffect(()=>{
+        const fetchUser = async()=>{
+            const res = await axios.get(`users/${post.userId}`)
+            setUser(res.data);
+        };
+        fetchUser();
+    },[])
+
     return( 
         <div className="post">
             <div className="postWrapper">
                 <div className="postTop">
                     <span className="postName">
-                        {post.anonymous ? "Anonymous User" : Users.filter(u=>u.id===post.userId)[0].username}
+                        {post.anonymous ? "Anonymous User" : user.username}
                     </span>
-                    <span className="postDate">{post.date}</span>
+                    <span className="postDate">
+                        {post.date}
+                    </span>
                 </div>
                 <div className="postCenter">
                     <span className="postText">{post.desc}</span>

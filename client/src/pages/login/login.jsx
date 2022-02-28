@@ -4,8 +4,16 @@
 // import Scrollbar from "../../components/scrollbar/Scrollbar";
 import "./login.css"
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 export default function Login() {
+    const email = useRef();
+    const password = useRef();
+    const handleClick = (e) => {
+        e.preventDefault();
+        
+    };
+
     return (
         <div className="login">
             <div className="loginWrapper"></div>
@@ -15,9 +23,22 @@ export default function Login() {
                 loginDescPlaceHolder fixme.
             </span>
             <div className="loginRight">
-                <div className="loginBox">
-                    <input placeholder="Email" className="loginInput" />
-                    <input placeholder="Password" className="loginInput" />
+                <form className="loginBox" onSubmit={handleClick}>
+                    <input 
+                    placeholder="Email" 
+                    className="loginInput" 
+                    type="email" 
+                    ref="email"
+                    required
+                    />
+                    <input 
+                    placeholder="Password" 
+                    className="loginInput" 
+                    type="password" 
+                    ref="password"
+                    minLength="6"
+                    required
+                    />
                     <Link to="/"className="loginButton" >
                         <button className="loginButton">
                             Login
@@ -33,7 +54,7 @@ export default function Login() {
                             Sign Up
                         </button>
                     </Link>
-                </div>
+                </form>
             </div>
         </div>
     );
