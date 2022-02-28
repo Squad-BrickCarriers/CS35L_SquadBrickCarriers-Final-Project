@@ -6,6 +6,7 @@ import "./login.css"
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 
+// Login page
 export default function Login() {
     const email = useRef();
     const password = useRef();
@@ -49,7 +50,7 @@ export default function Login() {
                     <span className="loginForgot">Forgot Password?</span>
 
                     {/* FIXME do the signup format */}
-                    <Link to="/signup" >
+                    <Link to="/signup" style={{ textDecoration: 'none' }} >
                         <button className="loginSignupButton" >
                             Sign Up
                         </button>

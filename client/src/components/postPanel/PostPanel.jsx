@@ -9,7 +9,7 @@ export default function PostPanel(){
                 <span className="panelText">What's going on recently:</span>
                 
                 {/*Whatshot is the FireIcon */}
-                <Link to="/ranking"className="" >
+                <Link to="/ranking" style={{ textDecoration: 'none' }}>
                     <Whatshot className="rank"/>    
                 </Link>
                 
