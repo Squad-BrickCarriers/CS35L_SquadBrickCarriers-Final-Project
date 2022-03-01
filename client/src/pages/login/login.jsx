@@ -1,17 +1,11 @@
 // Reference:
 // https://youtu.be/pFHyZvVxce0
 
-// import Topbar from "../../components/topbar/Topbar";
-// import Margin from "../../components/margin/Margin";
-// import Feed from "../../components/feed/Feed";
-// import Scrollbar from "../../components/scrollbar/Scrollbar";
-
-
 import "./login.css"
 import { useContext, useRef } from "react";
-import { Link } from "react-router-dom";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
+import { CircularProgress } from "@material-ui/core";
 
 // Login page
 export default function Login() {
@@ -28,51 +22,50 @@ export default function Login() {
 
     };
 
-
-
     return (
         <div className="login">
-            <div className="loginWrapper"></div>
-            <div className="loginLeft"></div>
-            <h3 className="loginLogo">TreeHole</h3>
-            <span className="loginDesc">
-                loginDescPlaceHolder fixme.
-            </span>
-            <div className="loginRight">
-                <form className="loginBox" onSubmit={handleClick}>
-                    <input
-                        placeholder="Email"
-                        className="loginInput"
-                        type="email"
-                        ref="email"
-                        required
-                        className="loginInput"
-                        ref={email}
-                    />
-                    <input
-                        placeholder="Password"
-                        className="loginInput"
-                        type="password"
-                        ref="password"
-                        minLength="6"
-                        required
-                    />
-                    <Link to="/" className="loginButton" >
-                        <button className="loginButton" disabled={isFetching}>
-                            Login
+            <div className="loginWrapper">
+                <div className="loginLeft">
+                    <h3 className="loginLogo">TreeHole</h3>
+                    <span className="loginDesc">
+                        a web-based anonymous social space
+                    </span>
+                </div>
+                <div className="loginRight">
+                    <form className="loginBox" onSubmit={handleClick}>
+                        <input
+                            placeholder="Email"
+                            type="email"
+                            required
+                            className="loginInput"
+                            ref={email}
+                        />
+                        <input
+                            placeholder="Password"
+                            type="password"
+                            required
+                            minLength="6"
+                            className="loginInput"
+                            ref={password}
+                        />
+                        <button className="loginButton" type="submit" disabled={isFetching}>
+                            {isFetching ? (
+                                <CircularProgress color="white" size="20px" />
+                            ) : (
+                                "Log In"
+                            )}
                         </button>
-                    </Link>
-
-                    {/* FIXME add Forgot Password page */}
-                    {/* <span className="loginForgot">Forgot Password?</span> */}
-
-                    {/* FIXME do the signup format */}
-                    <Link to="/signup" style={{ textDecoration: 'none' }} >
-                        <button className="loginSignupButton" >
-                            Sign Up
+                        {/* Forgot Password is an optional Feature to implement */}
+                        {/* <span className="loginForgot">Forgot Password?</span> */}
+                        <button className="loginRegisterButton">
+                            {isFetching ? (
+                                <CircularProgress color="white" size="20px" />
+                            ) : (
+                                "Sign Up"
+                            )}
                         </button>
-                    </Link>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     );
