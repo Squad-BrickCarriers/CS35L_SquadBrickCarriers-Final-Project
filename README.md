@@ -38,7 +38,7 @@ Treehole is a web-based **anonymous** social space where users can post anything
 ## Behind TreeHole
 <p align="left">
 
-#### We found many communications online during covid were not **sincere**. We want to create a safe and equal space for everyone to share whatever they like, in which people focus on the ideas instead of who they are.
+We found many communications online during covid were not **sincere**. We want to create a safe and equal space for everyone to share whatever they like, in which people focus on the ideas instead of who they are.
 </p>
 </br>
 
@@ -129,7 +129,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # Credit
 
 ## Developers
-
 - ### Backend:
     - [@hanchen-huang](https://github.com/hanchen-huang)
     - [@Yiwu-Yu](https://github.com/Liwu-Yu)
