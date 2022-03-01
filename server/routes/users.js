@@ -1,4 +1,3 @@
-
 const auth = require('../middleware/auth')
 const config = require('config');
 const jwt = require('jsonwebtoken');
@@ -8,6 +7,9 @@ const express = require('express');
 const router = express.Router();
 const { User, userValidation } = require('../models/User');
 const mongoose = require('mongoose');
+
+// TODO:    1. add status code
+//          2. complete error handling
 
 // Get all users
 router.get('/', async (req, res) => {
@@ -40,7 +42,7 @@ router.post('/signup', async (req, res) => {
 
     try {
         const savedUser = await user.save();
-        const token = jwt.sign({ _id: user._id}, config.get('jwtPrivateKey'));
+        const token = jwt.sign({ _id: user._id }, config.get('jwtPrivateKey'));
         res.header('x-auth-token', token)
            .send(_.pick(savedUser, ['_id', 'name']));
     } catch (err) {

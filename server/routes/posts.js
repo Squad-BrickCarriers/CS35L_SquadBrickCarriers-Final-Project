@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {Post, postValidation} = require('../models/Post');
+const { Post, postValidation } = require('../models/Post');
 
-// Functions; request handling 
+// TODO:    1. add status code
+//          2. complete error handling
 
 // Get all posts
 router.get('/', async (req, res) => {
     try {
-        const posts = await Post.find();
+        const posts = await Post.find().sort('-postdate');
         res.json(posts);
     } catch (err) {
         res.json({ message: err });
@@ -31,7 +32,10 @@ router.post('/', async (req, res) => {
 
     const post = new Post({
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        likes: req.body.likes,
+        author: req.body.author,
+        anonymous: req.body.anonymous
     })
 
     try {

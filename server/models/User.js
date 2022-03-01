@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const Joi = require('joi');
+const Joi = require('joi-oid');
 
-// like a class
 const UserSchema = mongoose.Schema({
     name: {
         type: String,
@@ -27,7 +26,5 @@ const userValidation = user => {
     return schema.validate(user);
 }
 
-const User = mongoose.model('User', UserSchema);
-
-module.exports.User = User;
+module.exports.User = mongoose.model('User', UserSchema);
 module.exports.userValidation = userValidation;

@@ -1,7 +1,6 @@
-// everything you need in the post
-
 const mongoose = require('mongoose');
-const Joi = require('joi');
+const Joi = require('joi-oid');
+
 const PostSchema = mongoose.Schema({
     title: {
         type: String,
@@ -17,14 +16,31 @@ const PostSchema = mongoose.Schema({
     },
     likes: {
         type: Number,
-        default: 0
-    }
+        required: true
+    },
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    anonymous: {
+        type: Boolean,
+        required: true
+    },
+    postdate: { 
+        type: Date, 
+        required: true,
+        default: Date.now
+    },
 })
 
 const postValidation = post => {
     const schema = Joi.object({
         title: Joi.string().required().min(6).max(50),
-        description: Joi.string().required().min(8).max(2000)
+        description: Joi.string().required().min(8).max(2000),
+        likes: Joi.number().integer().required(),
+        author: Joi.objectId().required(),
+        anonymous: Joi.boolean().required()
     });
 
     return schema.validate(post);
