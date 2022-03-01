@@ -15,6 +15,16 @@ router.get('/', async (req, res) => {
     }
 })
 
+// Get all posts ranked by likes
+router.get('/rank', async (req, res) => {
+    try {
+        const posts = await Post.find().sort('-likes');
+        res.json(posts);
+    } catch (err) {
+        res.json({ message: err });
+    }
+})
+
 // Select a post
 router.get('/:postId', async (req, res) => {
     try {
