@@ -25,6 +25,22 @@ router.get('/rank', async (req, res) => {
     }
 })
 
+// Select posts by keywords
+router.get('/search', async (req, res) => {
+    try {
+        const posts = await Post.find({
+            $or: [
+                { title: { $regex: RegExp(req.body.keyword), $options: 'i' } },
+                { description: { $regex: RegExp(req.body.keyword), $options: 'i' } },
+            ]
+        })
+        .sort('-postdate').populate('author', 'name');
+        res.json(posts);
+    } catch (err) {
+        res.json({ message: err });
+    }
+})
+
 // Select a post
 router.get('/:postId', async (req, res) => {
     try {
