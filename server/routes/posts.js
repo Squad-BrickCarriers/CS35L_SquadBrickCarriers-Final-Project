@@ -8,7 +8,7 @@ const { Post, postValidation } = require('../models/Post');
 // Get all posts
 router.get('/', async (req, res) => {
     try {
-        const posts = await Post.find().sort('-postdate');
+        const posts = await Post.find().sort('-postdate').populate('author', 'name');
         res.json(posts);
     } catch (err) {
         res.json({ message: err });
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 // Get all posts ranked by likes
 router.get('/rank', async (req, res) => {
     try {
-        const posts = await Post.find().sort('-likes');
+        const posts = await Post.find().sort('-likes').populate('author', 'name');
         res.json(posts);
     } catch (err) {
         res.json({ message: err });
@@ -28,7 +28,7 @@ router.get('/rank', async (req, res) => {
 // Select a post
 router.get('/:postId', async (req, res) => {
     try {
-        const post = await Post.findById(req.params.postId);
+        const post = await Post.findById(req.params.postId).populate('author', 'name');
         res.json(post);
     } catch (err) {
         res.json({ message: err });
