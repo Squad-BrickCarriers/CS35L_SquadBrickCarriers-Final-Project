@@ -15,15 +15,15 @@ export default function Signup() {
             passwordAgain.current.setCustomValidity("Passwords don't match")
         } else{
             const user = {
-                username: username.current.value,
+                name: username.current.value,
                 email: email.current.value,
                 password: password.current.value,
             };
-            try{
-                axios.post("http://localhost:3000/users/signup", user);
-            }catch(err){
-                console.log(err)
-            }
+              try{
+                 axios.post("http://localhost:8000/users/signup", user);
+             }catch(err){
+                 console.log(err);
+             }
         }
     };
 
