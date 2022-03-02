@@ -9,7 +9,7 @@ export default function Signup() {
     const password = useRef()
     const passwordAgain = useRef();
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
         if(passwordAgain.current.value !== password.current.value){
             passwordAgain.current.setCustomValidity("Passwords don't match")
@@ -19,11 +19,15 @@ export default function Signup() {
                 email: email.current.value,
                 password: password.current.value,
             };
-              try{
-                 axios.post("http://localhost:8000/users/signup", user);
-             }catch(err){
-                 console.log(err);
-             }
+            axios
+            .post("/users/signup", user)
+            .then(() => {
+                alert("Signup Successful! Redirecting to Login Page");
+                window.location.href = "/login";
+            })
+            .catch(() => {
+                alert("Try Another Username!")
+            });
         }
     };
 
@@ -37,23 +41,22 @@ export default function Signup() {
                     </span>
                 </div>
                 <div className="loginRight">
-                    <form className="loginBox" onSubmit={handleClick}>
-                        <input placeholder="Username" ref={username} className="loginInput" required/>
-                        <input placeholder="Email" ref={email} className="loginInput" type="email" required/>
-                        <input placeholder="Password" ref={password} className="loginInput" minLength="6" type="password" required/>
-                        <input placeholder="Password Again" ref={passwordAgain} className="loginInput" minLength="6" type="password" required/>
+                    <body>
+                        <form className="loginBox" onSubmit={handleClick}>
+                            <input placeholder="Username" ref={username} className="loginInput" required/>
+                            <input placeholder="Email" ref={email} className="loginInput" type="email" required/>
+                            <input placeholder="Password" ref={password} className="loginInput" minLength="6" type="password" required/>
+                            <input placeholder="Password Again" ref={passwordAgain} className="loginInput" minLength="6" type="password" required/>
 
-                        {/* Send signup request to backend */}
-                        <button type="submit" className="loginButton">Sign Up</button>
-
-                        <Link to="/" style={{ textDecoration: 'none' }} >
-                            {/*!FIXME goes to homepage for now */}
+                            {/* Send signup request to backend */}
+                            <button type="submit" className="loginButton">Sign Up</button>
+                        </form>
+                    </body>
+                    <Link to="/login" style={{ textDecoration: 'none' }} >
                             <button className="loginRegisterButton">
                                 Log into Account
                             </button>
                         </Link>
-
-                    </form>
                 </div>
             </div>
         </div>

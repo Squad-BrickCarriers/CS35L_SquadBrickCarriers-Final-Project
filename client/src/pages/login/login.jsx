@@ -6,6 +6,8 @@ import { useContext, useRef } from "react";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 // Login page
 export default function Login() {
@@ -13,13 +15,27 @@ export default function Login() {
     const password = useRef();
     const { isFetching, dispatch } = useContext(AuthContext);
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        loginCall(
-            { email: email.current.value, password: password.current.value },
-            dispatch
-        );
-
+    const handleClick = (data) => {
+        axios
+        .post(
+        'http://localhost:3000/auth/login', 
+        data, 
+        { headers: {"content-type": "application/json"} }
+        )
+        .then((res) => {
+            let token_deserialized=JSON.stringify(res.data.data);
+            if(res.status){
+                localStorage.clear()
+                localStorage.setItem('token',token_deserialized);
+                localStorage.setItem('email',data.email);
+                //console.log(localStorage.getItem('token'));
+                window.location.href = "/home";
+        }
+        })
+        .catch(()=>{
+            localStorage.clear();
+            alert("Incorrect Password or Username");
+        });
     };
 
     return (
@@ -57,13 +73,15 @@ export default function Login() {
                         </button>
                         {/* Forgot Password is an optional Feature to implement */}
                         {/* <span className="loginForgot">Forgot Password?</span> */}
-                        <button className="loginRegisterButton">
-                            {isFetching ? (
-                                <CircularProgress color="white" size="20px" />
-                            ) : (
-                                "Sign Up"
-                            )}
+                        <Link to="/signup">
+                            <button className="loginRegisterButton">
+                                {isFetching ? (
+                                    <CircularProgress color="white" size="20px" />
+                                ) : (
+                                    "Sign Up"
+                                )}
                         </button>
+                        </Link>
                     </form>
                 </div>
             </div>
