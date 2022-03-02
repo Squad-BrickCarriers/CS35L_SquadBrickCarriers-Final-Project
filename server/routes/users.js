@@ -35,7 +35,7 @@ router.post('/signup', async (req, res) => {
     let user = await User.findOne({ name: req.body.name });
     if (user) return res.status(400).send('Username already existed.');
 
-    user = new User(_.pick(req.body, ['name', 'password']));
+    user = new User(_.pick(req.body, ['name', 'email', 'password']));
     //hash the password in the DB
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);

@@ -7,15 +7,18 @@ const UserSchema = mongoose.Schema({
         required: true,
         unique: true,
         minlength: 6,
-        maxlength: 20
+        maxlength: 20,
+        unique: true,
     },
     password: {
         type: String,
         required: true,
         minlength: 8,
         maxlength: 300
-    }
-})
+    },
+},
+{timestamps: true}
+)
 
 const userValidation = user => {
     const schema = Joi.object({
