@@ -32,10 +32,10 @@ router.post('/signup', async (req, res) => {
     const { error } = userValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    let user = await User.findOne({ name: req.body.name });
-    if (user) return res.status(400).send('Username already existed.');
+    let user = await User.findOne({ email: req.body.email });
+    if (user) return res.status(400).send('User already existed.');
 
-    user = new User(_.pick(req.body, ['name', 'password']));
+    user = new User(_.pick(req.body, ['name', 'email', 'password']));
     //hash the password in the DB
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
@@ -44,7 +44,7 @@ router.post('/signup', async (req, res) => {
         const savedUser = await user.save();
         const token = jwt.sign({ _id: user._id }, config.get('jwtPrivateKey'));
         res.header('x-auth-token', token)
-           .send(_.pick(savedUser, ['_id', 'name']));
+           .send(_.pick(savedUser, ['_id', 'name', 'email']));
     } catch (err) {
         res.json({ message: err });
     }
