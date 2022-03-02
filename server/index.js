@@ -35,9 +35,9 @@ mongoose.connect(
     console.log('Connected to DB')
 })
 
-const server = app.listen(3000, () => {
+const server = app.listen(8000, () => {
     const host = server.address().address;
     const port = server.address().port;
 
-    console.log("Listening on port 3000...", host, port)
+    console.log("Listening on port 8000...", host, port)
 }) 
