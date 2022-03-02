@@ -3,7 +3,6 @@
 
 import "./login.css"
 import { useContext, useRef } from "react";
-import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -13,12 +12,12 @@ import axios from "axios";
 export default function Login() {
     const email = useRef();
     const password = useRef();
-    const { isFetching, dispatch } = useContext(AuthContext);
+    const { isFetching } = useContext(AuthContext);
 
     const handleClick = (data) => {
         axios
         .post(
-        'http://localhost:3000/auth/login', 
+        'http://localhost:8000/auth/login', 
         data, 
         { headers: {"content-type": "application/json"} }
         )
@@ -39,6 +38,7 @@ export default function Login() {
     };
 
     return (
+        <body>
         <div className="login">
             <div className="loginWrapper">
                 <div className="loginLeft">
@@ -86,5 +86,6 @@ export default function Login() {
                 </div>
             </div>
         </div>
+        </body>
     );
 }

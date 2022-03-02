@@ -20,7 +20,7 @@ export default function Signup() {
                 password: password.current.value,
             };
             axios
-            .post("/users/signup", user)
+            .post("http://localhost:8000/users/signup", user)
             .then(() => {
                 alert("Signup Successful! Redirecting to Login Page");
                 window.location.href = "/login";
@@ -32,6 +32,7 @@ export default function Signup() {
     };
 
     return (
+        <body>
         <div className="login">
             <div className="loginWrapper">
                 <div className="loginLeft">
@@ -41,17 +42,15 @@ export default function Signup() {
                     </span>
                 </div>
                 <div className="loginRight">
-                    <body>
                         <form className="loginBox" onSubmit={handleClick}>
-                            <input placeholder="Username" ref={username} className="loginInput" required/>
-                            <input placeholder="Email" ref={email} className="loginInput" type="email" required/>
-                            <input placeholder="Password" ref={password} className="loginInput" minLength="6" type="password" required/>
-                            <input placeholder="Password Again" ref={passwordAgain} className="loginInput" minLength="6" type="password" required/>
+                            <input placeholder="Username" ref={username} className="loginInput" minLength="3" maxlength="20" required/>
+                            <input placeholder="Email" ref={email} className="loginInput" type="email" minLength="5" maxlength="225" required/>
+                            <input placeholder="Password" ref={password} className="loginInput" minLength="8" maxlength="300" type="password" required/>
+                            <input placeholder="Password Again" ref={passwordAgain} className="loginInput" minLength="8" maxlength="300" type="password" required/>
 
                             {/* Send signup request to backend */}
                             <button type="submit" className="loginButton">Sign Up</button>
                         </form>
-                    </body>
                     <Link to="/login" style={{ textDecoration: 'none' }} >
                             <button className="loginRegisterButton">
                                 Log into Account
@@ -60,5 +59,6 @@ export default function Signup() {
                 </div>
             </div>
         </div>
+        </body>
     );
 }

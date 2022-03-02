@@ -30,10 +30,10 @@ router.get('/me', auth, async (req, res) => {
 // Add a user， req needs name, email, and password, return the _id, name, and email of the new user. Also it sets the x-auth-token header
 router.post('/signup', async (req, res) => {
     const { error } = userValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    if (error) return res.status(402).send(error.details[0].message);
 
     let user = await User.findOne({ email: req.body.email });
-    if (user) return res.status(400).send('User already existed.');
+    if (user) return res.status(401).send('User already existed.');
 
     user = new User(_.pick(req.body, ['name', 'email', 'password']));
     //hash the password in the DB
