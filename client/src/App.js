@@ -1,19 +1,26 @@
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useContext } from "react";
 
 import Home from "./pages/home/Home";
 import Login from "./pages/login/login";
 import Signup from "./pages/signup/signup";
 import Ranking from "./pages/ranking/ranking";
+import { AuthContext } from "./components/context/AuthContext";
 
 function App() {
   // Get router ready so that we don't have to comment out things
   //!Notice the format update of React Router V6
+
+  //get user
+  const {user} = useContext(AuthContext)
+
   //for search
   const [searchResults, setSearchResults] = useState([]);
 
@@ -34,9 +41,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home />} /> 
-        <Route path='login' element={<Login />} />
-        <Route path='signup' element={<Signup />} />
+        <Route exact path='/' element={user ? <Home /> : <Signup/>} /> 
+        <Route path='login' element={user ? <Navigate to="/"/> : <Login/>} />
+        <Route path='signup' element={user ? <Navigate to="/"/> : <Signup/>} />
         <Route path='ranking' element={<Ranking />} />
       </Routes>
     </Router >

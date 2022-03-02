@@ -1,23 +1,30 @@
 import "./share.css"
 import { MailOutline } from "@material-ui/icons"
-import { useState } from "react"
+import { useContext, useRef, useState } from "react"
+import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
 
 export default function Share({share}){
-    const [description, setDescription] = useState("");
+    const {user} = useContext(AuthContext)
+    const desc = useRef()
     const[isAnonymous, setAnonymous] = useState(false)
-
-
-    const descHandler = (desc)=>{
-        setDescription(desc.target.value);
-    }
 
     const anonymousHandler = ()=>{
         setAnonymous(!isAnonymous);
     }
 
-    const submitHandler = (submit) => {
+    const submitHandler = async (submit) => {
         submit.preventDefault();
-        share(description, setDescription);
+        const newPost = {
+            author: user._id,
+            description: desc.current.value,
+            likes: 0,
+            anonymous: isAnonymous
+        }
+        try{
+            await axios.post("/posts", newPost)
+        } catch(err){
+        }
       }
 
     return(
@@ -27,10 +34,8 @@ export default function Share({share}){
                     <MailOutline className="postIcon" htmlColor="purple"/>
                     <input 
                     type="text"
-                    id ="newPost"
-                    value={description}
                     placeholder="Share what's in your mind!" 
-                    onChange={descHandler}
+                    ref={desc}
                     className="shareInput"
                     required
                     />

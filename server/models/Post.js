@@ -2,11 +2,10 @@ const mongoose = require('mongoose');
 const Joi = require('joi-oid');
 
 const PostSchema = mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-        minlength: 6,
-        maxlength: 50
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
     description: {
         type: String,
@@ -16,11 +15,6 @@ const PostSchema = mongoose.Schema({
     },
     likes: {
         type: Number,
-        required: true
-    },
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
         required: true
     },
     anonymous: {

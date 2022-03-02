@@ -57,10 +57,9 @@ router.post('/', async (req, res) => {
     if (error) return res.json(error);
 
     const post = new Post({
-        title: req.body.title,
+        author: req.body.author,
         description: req.body.description,
         likes: req.body.likes,
-        author: req.body.author,
         anonymous: req.body.anonymous
     })
 

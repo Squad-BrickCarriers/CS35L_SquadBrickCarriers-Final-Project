@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import AuthReducer from "../../context/AuthReducer";
 
 const INITIAL_STATE = {
     user: null,
