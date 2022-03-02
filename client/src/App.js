@@ -11,7 +11,6 @@ import { useContext } from "react";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/login";
 import Signup from "./pages/signup/signup";
-import Ranking from "./pages/ranking/ranking";
 import { AuthContext } from "./components/context/AuthContext";
 
 function App() {
@@ -44,7 +43,6 @@ function App() {
         <Route exact path='/' element={user ? <Home /> : <Signup/>} /> 
         <Route path='login' element={user ? <Navigate to="/"/> : <Login/>} />
         <Route path='signup' element={user ? <Navigate to="/login"/> : <Signup/>} />
-        <Route path='ranking' element={<Ranking />} />
       </Routes>
     </Router >
   );

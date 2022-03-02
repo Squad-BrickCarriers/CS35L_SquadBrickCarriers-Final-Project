@@ -1,6 +1,3 @@
-// Reference:
-// https://youtu.be/pFHyZvVxce0
-
 import axios from "axios";
 
 export const loginCall = async (userCredential, dispatch) => {

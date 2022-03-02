@@ -4,7 +4,7 @@ import Feed from "../../components/feed/Feed";
 import Scrollbar from "../../components/scrollbar/Scrollbar";
 import "./home.css"
 
-export default function Home(){
+export default function Home({ fetchSearchResults }){
     return(
     <>
         <Topbar/>

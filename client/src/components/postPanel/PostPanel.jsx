@@ -1,6 +1,6 @@
 import "./postPanel.css"
-import {Whatshot} from "@material-ui/icons"
 import { Link } from "react-router-dom";
+import RankingIcon from "../rankingIcon/RankingIcon";
 
 export default function PostPanel(){
     return(
@@ -10,7 +10,7 @@ export default function PostPanel(){
                 
                 {/*Whatshot is the FireIcon */}
                 <Link to="/ranking" style={{ textDecoration: 'none' }}>
-                    <Whatshot className="rank"/>    
+                    <RankingIcon/>    
                 </Link>
                 
 

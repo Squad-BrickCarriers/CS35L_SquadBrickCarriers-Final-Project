@@ -7,6 +7,17 @@ import axios from "axios"
 
 export default function Feed(){
     const [posts, setPosts] = useState([])
+    const [rankMode, setRankMode] = useState("false")
+    const postList = posts.map((post) => {
+        const postBody = 
+          <Post
+            key={post._id}
+            id={post._id}
+            desc={post.description}
+            likes={post.likes}
+            liked={post.liked}
+         />
+    })
 
     useEffect(()=>{
         const fetchPosts = async()=>{
@@ -21,9 +32,7 @@ export default function Feed(){
             <div className="feedWrapper">
                 <Share/>
                 <PostPanel/>
-                {posts.map((p) => (
-                    <Post key={p.id} post ={p} />
-                ))}
+                {postList}
             </div>
         </div>
     )

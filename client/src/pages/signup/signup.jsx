@@ -20,7 +20,7 @@ export default function Signup() {
                 password: password.current.value,
             };
             try{
-                axios.post("/users/signup", user);
+                axios.post("http://localhost:3000/users/signup", user);
             }catch(err){
                 console.log(err)
             }
