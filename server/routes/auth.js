@@ -9,7 +9,7 @@ const Joi = require('joi-oid');
 const { User } = require('../models/User');
 
 
-//sign
+//sign in method
 
 const validation = user => {
     const schema = Joi.object({
@@ -20,6 +20,7 @@ const validation = user => {
     return schema.validate(user);
 }
 
+// need email and password, if correct it will return the token
 router.post('/', async (req, res) => {
     const { error } = validation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
