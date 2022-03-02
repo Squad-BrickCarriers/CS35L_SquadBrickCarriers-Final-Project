@@ -10,7 +10,7 @@ const PostSchema = mongoose.Schema({
     description: {
         type: String,
         required: true,
-        minlength: 8,
+        minlength: 1,
         maxlength: 2000
     },
     likes: {
@@ -21,19 +21,24 @@ const PostSchema = mongoose.Schema({
         type: Boolean,
         required: true
     },
+    liked_users: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User',
+        required: true,
+        default: []
+    }],
     postdate: { 
         type: Date, 
         required: true,
         default: Date.now
-    },
+    }
 })
 
 const postValidation = post => {
     const schema = Joi.object({
-        title: Joi.string().required().min(6).max(50),
-        description: Joi.string().required().min(8).max(2000),
-        likes: Joi.number().integer().required(),
         author: Joi.objectId().required(),
+        description: Joi.string().required().min(1).max(2000),
+        likes: Joi.number().integer().required(),
         anonymous: Joi.boolean().required()
     });
 
