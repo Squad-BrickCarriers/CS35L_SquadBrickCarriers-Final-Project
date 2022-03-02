@@ -43,7 +43,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={user ? <Home /> : <Signup/>} /> 
         <Route path='login' element={user ? <Navigate to="/"/> : <Login/>} />
-        <Route path='signup' element={user ? <Navigate to="/"/> : <Signup/>} />
+        <Route path='signup' element={user ? <Navigate to="/login"/> : <Signup/>} />
         <Route path='ranking' element={<Ranking />} />
       </Routes>
     </Router >
