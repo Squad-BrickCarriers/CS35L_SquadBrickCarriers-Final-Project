@@ -8,6 +8,7 @@ const router = express.Router();
 const Joi = require('joi-oid');
 const { User, userValidation} = require('../models/User');
 
+<<<<<<< HEAD
 //sign
 
 const validation = user => {

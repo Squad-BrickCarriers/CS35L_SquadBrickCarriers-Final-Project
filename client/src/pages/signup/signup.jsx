@@ -19,12 +19,12 @@ export default function Signup() {
                 email: email.current.value,
                 password: password.current.value,
             };
-            // try{
-            //     // await axios.post("/auth/signup", user);
-
-            // }catch(err{
-
-            // })
+            try{
+                //TODO: registering process incomplete
+                axios.post("/users/signup", user);
+            }catch(err){
+                console.log(err)
+            }
         }
     };
 
