@@ -20,7 +20,7 @@ const validation = user => {
     return schema.validate(user);
 }
 
-// need email and password, if correct it will return the token
+// need email and password, if correct it will return the token, and set the x-auth-token header
 router.post('/', async (req, res) => {
     const { error } = validation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -32,7 +32,8 @@ router.post('/', async (req, res) => {
     if (!validPassword) return res.status(400).send('Invalid username or password.');
 
     const token = jwt.sign({ _id: user._id}, config.get('jwtPrivateKey'));
-    res.send(token);
+    res.header('x-auth-token', token)
+       .send(token);
 });
 
 

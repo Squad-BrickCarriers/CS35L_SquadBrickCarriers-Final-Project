@@ -27,7 +27,7 @@ router.get('/me', auth, async (req, res) => {
     res.send(user);
 })
 
-// Add a user， req needs name, email, and password, return the _id, name, and email of the new user.
+// Add a user， req needs name, email, and password, return the _id, name, and email of the new user. Also it sets the x-auth-token header
 router.post('/signup', async (req, res) => {
     const { error } = userValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
