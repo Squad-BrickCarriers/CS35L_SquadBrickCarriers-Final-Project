@@ -20,7 +20,6 @@ export default function Signup() {
                 password: password.current.value,
             };
             try{
-                //TODO: registering process incomplete
                 axios.post("/users/signup", user);
             }catch(err){
                 console.log(err)
@@ -34,7 +33,7 @@ export default function Signup() {
                 <div className="loginLeft">
                     <h3 className="loginLogo">TreeHole</h3>
                     <span className="loginDesc">
-                        Connect with friends and the world around you on TreeHole.
+                        Share and connect on TreeHole
                     </span>
                 </div>
                 <div className="loginRight">
