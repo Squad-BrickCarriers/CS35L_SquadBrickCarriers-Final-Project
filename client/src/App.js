@@ -15,10 +15,10 @@ import { AuthContext } from "./components/context/AuthContext";
 
 function App() {
   // Get router ready so that we don't have to comment out things
-  //!Notice the format update of React Router V6
+
 
   //get user
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
 
   //for search
   const [searchResults, setSearchResults] = useState([]);
@@ -27,22 +27,25 @@ function App() {
   const fetchSearchResults = (searchWord) => {
     //TO DO
     axios
-    .post()
-    .then((results)=>{
-      console.log(results);
-      setSearchResults(results.data);
-    })
-    .catch((error=>{
-      alert(error);
-    }))
+      .post()
+      .then((results) => {
+        console.log(results);
+        setSearchResults(results.data);
+      })
+      .catch((error => {
+        alert(error);
+      }))
   }
 
   return (
+    //!Notice the format update of React Router V6
+    
     <Router>
       <Routes>
-        <Route exact path='/' element={user ? <Home /> : <Signup/>} /> 
-        <Route path='login' element={user ? <Navigate to="/"/> : <Login/>} />
-        <Route path='signup' element={user ? <Navigate to="/login"/> : <Signup/>} />
+        {/* Can not see the homepage without the user credentials.*/}
+        <Route exact path='/' element={user ? <Home /> : <Signup />} />
+        <Route path='login' element={user ? <Navigate to="/" /> : <Login />} />
+        <Route path='signup' element={user ? <Navigate to="/login" /> : <Signup />} />
       </Routes>
     </Router >
   );

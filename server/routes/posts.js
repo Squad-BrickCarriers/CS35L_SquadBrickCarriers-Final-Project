@@ -38,7 +38,7 @@ router.get('/rank', async (req, res) => {
 router.get('/search', async (req, res) => {
     try {
         const posts = await Post.find({ description: { $regex: RegExp(req.body.keyword), $options: 'i' } })
-        .sort('-postdate').populate('author', 'name');
+            .sort('-postdate').populate('author', 'name');
         res.json(posts);
     } catch (err) {
         res.json({ message: err });
