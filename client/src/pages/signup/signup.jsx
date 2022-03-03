@@ -14,6 +14,7 @@ export default function Signup() {
         if(passwordAgain.current.value !== password.current.value){
             passwordAgain.current.setCustomValidity("Passwords don't match")
         } else{
+            //
             const user = {
                 name: username.current.value,
                 email: email.current.value,

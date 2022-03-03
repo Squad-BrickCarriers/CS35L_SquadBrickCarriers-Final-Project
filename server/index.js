@@ -10,7 +10,8 @@ const postRoute = require('./routes/posts');
 const userRoute = require('./routes/users')
 const auth = require('./routes/auth');
 
-if (!config.has('jwtPrivateKey')){
+if (!config.get('jwtPrivateKey')){
+// if (!config.has('jwtPrivateKey')){  // using 'has' might be buggy
     console.error('FATAL ERROR: jwtPrivateKey is not defined.');
     process.exit(1);
 }
