@@ -44,10 +44,10 @@ export default function Signup() {
                 </div>
                 <div className="loginRight">
                         <form className="loginBox" onSubmit={handleClick}>
-                            <input placeholder="Username" ref={username} className="loginInput" minLength="3" maxlength="20" required/>
-                            <input placeholder="Email" ref={email} className="loginInput" type="email" minLength="5" maxlength="225" required/>
-                            <input placeholder="Password" ref={password} className="loginInput" minLength="8" maxlength="300" type="password" required/>
-                            <input placeholder="Password Again" ref={passwordAgain} className="loginInput" minLength="8" maxlength="300" type="password" required/>
+                            <input placeholder="Username" ref={username} className="loginInput" minLength="3" maxLength="20" required/>
+                            <input placeholder="Email" ref={email} className="loginInput" type="email" minLength="5" maxLength="225" required/>
+                            <input placeholder="Password" ref={password} className="loginInput" minLength="8" maxLength="300" type="password" required/>
+                            <input placeholder="Password Again" ref={passwordAgain} className="loginInput" minLength="8" maxLength="300" type="password" required/>
 
                             {/* Send signup request to backend */}
                             <button type="submit" className="loginButton">Sign Up</button>

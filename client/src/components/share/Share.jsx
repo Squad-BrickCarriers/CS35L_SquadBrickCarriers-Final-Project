@@ -21,38 +21,40 @@ export default function Share({share}){
             likes: 0,
             anonymous: isAnonymous
         }
-        try{
-            await axios.post("/posts", newPost)
-        } catch(err){
-        }
+        await axios.post("/posts/newpost", newPost)
+        .catch(err => {
+            alert(err);
+        });
       }
 
     return(
-        <form onSubmit={submitHandler} className="share">
-            <div className="shareWrapper">
-                <div className="shareTop">
-                    <MailOutline className="postIcon" htmlColor="purple"/>
-                    <input 
-                    type="text"
-                    placeholder="Share what's in your mind!" 
-                    ref={desc}
-                    className="shareInput"
-                    required
-                    />
-                </div>
-                <hr className="shareHr"></hr>
-                <div className="shareBottom">
-                    <div className="option">
-                        make this anonymous
+        <body>
+            <form onSubmit={submitHandler} className="share">
+                <div className="shareWrapper">
+                    <div className="shareTop">
+                        <MailOutline className="postIcon" htmlColor="purple"/>
                         <input 
-                        type="checkbox" 
-                        onChange={anonymousHandler}
-                        className="checkbox">
-                        </input>
+                        type="text"
+                        placeholder="Share what's in your mind!" 
+                        ref={desc}
+                        className="shareInput"
+                        required
+                        />
                     </div>
-                    <button className="shareButton" type="submit">post</button>
+                    <hr className="shareHr"></hr>
+                    <div className="shareBottom">
+                        <div className="option">
+                            make this anonymous
+                            <input 
+                            type="checkbox" 
+                            onChange={anonymousHandler}
+                            className="checkbox">
+                            </input>
+                        </div>
+                        <button className="shareButton" type="submit">post</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </body>
     )
 }

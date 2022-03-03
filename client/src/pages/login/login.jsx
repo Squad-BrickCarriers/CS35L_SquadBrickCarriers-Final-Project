@@ -23,8 +23,8 @@ export default function Login() {
         axios
         .post(
         'http://localhost:8000/auth/login', 
-        // data, 
-        // { headers: {"content-type": "application/json"} }
+        data, 
+        { headers: {"content-type": "application/json"} }
         )
         .then((res) => {
             let token_deserialized=JSON.stringify(res.data.data);
@@ -32,6 +32,7 @@ export default function Login() {
                 localStorage.clear()
                 localStorage.setItem('token',token_deserialized);
                 localStorage.setItem('email',data.email);
+                localStorage.setItem('username',data.name);
                 //console.log(localStorage.getItem('token'));
                 window.location.href = "/home";
             }
@@ -85,7 +86,7 @@ export default function Login() {
                                     ) : (
                                     "Sign Up"
                                     )}
-                            </button>
+                                </button>
                             </Link>
                         </form>
                     </div>

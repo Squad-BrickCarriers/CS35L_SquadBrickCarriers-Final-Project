@@ -1,16 +1,5 @@
-.rank{
-    font-size: 30px !important;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 40px;
-    cursor: pointer;
-    color:rgb(240, 82, 9);
-    background-color: white;
-    border-radius: 30px;
-}
-
 .postPanel{
-    width: 100%;
+    width: 80%;
     height: 30px;
     border-radius: 10px;
     margin-top: 20px;

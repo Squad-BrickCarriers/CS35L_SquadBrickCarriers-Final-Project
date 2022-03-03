@@ -4,9 +4,10 @@ import { Person } from "@material-ui/icons"
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
+import axios from "axios";
 
-export default function Topbar() {
-    const {user} = useContext(AuthContext);
+export default function Topbar({fetchSearchResults}) {
+    const res = axios.get("/users/me");
     return (
         <div className="topbarPanel">
             <div className="topLeft">
@@ -16,7 +17,7 @@ export default function Topbar() {
                 </Link>
             </div>
             <div className="topCenter">
-                <SearchBar />
+                <SearchBar fetchSearchResults={fetchSearchResults}/>
             </div>
             <div className="topRight">
                 {/* Link to login page */}
@@ -27,7 +28,7 @@ export default function Topbar() {
 
                 {/* !FIXME Link to personal profile or login page */}
                 <Link to="/login" style={{textDecoration: "none"}}>
-                    <span className="username">{user._id}</span>
+                    <span className="username">{localStorage.getItem("username")}</span>
                 </Link>
             </div>
         </div>

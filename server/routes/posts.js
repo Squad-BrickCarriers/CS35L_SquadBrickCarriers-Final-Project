@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 // Get all posts
 // req: None
 // res: return all posts to '/' in the order of posted time
-router.get('/', async (req, res) => {
+router.get('/getall', async (req, res) => {
     try {
         const posts = await Post.find().sort('-postdate').populate('author', 'name');
         res.json(posts);
@@ -61,7 +61,7 @@ router.get('/:postId', async (req, res) => {
 // req: require author(objectId), description(string), likes(integer), 
 //      anonymous(boolean) in the body
 // res: return the added post to '/'
-router.post('/', async (req, res) => {
+router.post('/newpost', async (req, res) => {
     const { error } = postValidation(req.body);
     if (error) return res.json(error);
 
