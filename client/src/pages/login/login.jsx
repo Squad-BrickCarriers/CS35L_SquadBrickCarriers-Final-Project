@@ -14,12 +14,17 @@ export default function Login() {
     const password = useRef();
     const { isFetching } = useContext(AuthContext);
 
-    const handleClick = (data) => {
+    const handleClick = async (e) => {
+        e.preventDefault();
+        const data = {
+            email: email.current.value,
+            password: password.current.value,
+        };
         axios
         .post(
         'http://localhost:8000/auth/login', 
-        data, 
-        { headers: {"content-type": "application/json"} }
+        // data, 
+        // { headers: {"content-type": "application/json"} }
         )
         .then((res) => {
             let token_deserialized=JSON.stringify(res.data.data);
@@ -29,7 +34,7 @@ export default function Login() {
                 localStorage.setItem('email',data.email);
                 //console.log(localStorage.getItem('token'));
                 window.location.href = "/home";
-        }
+            }
         })
         .catch(()=>{
             localStorage.clear();
@@ -39,53 +44,53 @@ export default function Login() {
 
     return (
         <body>
-        <div className="login">
-            <div className="loginWrapper">
-                <div className="loginLeft">
-                    <h3 className="loginLogo">TreeHole</h3>
-                    <span className="loginDesc">
-                        a web-based anonymous social space
-                    </span>
-                </div>
-                <div className="loginRight">
-                    <form className="loginBox" onSubmit={handleClick}>
-                        <input
-                            placeholder="Email"
-                            type="email"
-                            required
-                            className="loginInput"
-                            ref={email}
-                        />
-                        <input
-                            placeholder="Password"
-                            type="password"
-                            required
-                            minLength="6"
-                            className="loginInput"
-                            ref={password}
-                        />
-                        <button className="loginButton" type="submit" disabled={isFetching}>
-                            {isFetching ? (
-                                <CircularProgress color="white" size="20px" />
-                            ) : (
-                                "Log In"
-                            )}
-                        </button>
-                        {/* Forgot Password is an optional Feature to implement */}
-                        {/* <span className="loginForgot">Forgot Password?</span> */}
-                        <Link to="/signup">
-                            <button className="loginRegisterButton">
+            <div className="login">
+                <div className="loginWrapper">
+                    <div className="loginLeft">
+                        <h3 className="loginLogo">TreeHole</h3>
+                        <span className="loginDesc">
+                            a web-based anonymous social space
+                        </span>
+                    </div>
+                    <div className="loginRight">
+                        <form className="loginBox" onSubmit={handleClick}>
+                            <input
+                                placeholder="Email"
+                                type="email"
+                                required
+                                className="loginInput"
+                                ref={email}
+                            />
+                            <input
+                                placeholder="Password"
+                                type="password"
+                                required
+                                minLength="8"
+                                className="loginInput"
+                                ref={password}
+                            />
+                            <button className="loginButton" type="submit" disabled={isFetching}>
                                 {isFetching ? (
                                     <CircularProgress color="white" size="20px" />
                                 ) : (
-                                    "Sign Up"
+                                    "Log In"
                                 )}
-                        </button>
-                        </Link>
-                    </form>
+                            </button>
+                            {/* Forgot Password is an optional Feature to implement */}
+                            {/* <span className="loginForgot">Forgot Password?</span> */}
+                            <Link to="/signup">
+                                <button className="loginRegisterButton">
+                                    {isFetching ? (
+                                        <CircularProgress color="white" size="20px" />
+                                    ) : (
+                                    "Sign Up"
+                                    )}
+                            </button>
+                            </Link>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
         </body>
     );
 }
