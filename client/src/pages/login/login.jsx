@@ -27,7 +27,7 @@ export default function Login() {
         { headers: {"content-type": "application/json"} }
         )
         .then((res) => {
-            let token_deserialized=JSON.stringify(res.data.data);
+            let token_deserialized=JSON.stringify(res.data);
             if(res.status){
                 localStorage.clear()
                 localStorage.setItem('token',token_deserialized);
