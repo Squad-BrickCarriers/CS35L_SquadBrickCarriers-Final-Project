@@ -1,11 +1,11 @@
 import "./share.css"
 import { MailOutline } from "@material-ui/icons"
 import { useContext, useRef, useState } from "react"
-import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
 export default function Share({share}){
-    const {user} = useContext(AuthContext)
+    const token = localStorage.getItem("token");
+    const user = axios.get("/users/me", {'x-auth-token': token})
     const desc = useRef()
     const[isAnonymous, setAnonymous] = useState(false)
 
@@ -16,15 +16,16 @@ export default function Share({share}){
     const submitHandler = async (submit) => {
         submit.preventDefault();
         const newPost = {
-            author: user._id,
+            author: user.name,
             description: desc.current.value,
             likes: 0,
             anonymous: isAnonymous
         }
-        await axios.post("/posts/newpost", newPost)
+        axios.post("/posts/newpost", newPost)
         .catch(err => {
             alert(err);
         });
+        console.log(newPost)
       }
 
     return(

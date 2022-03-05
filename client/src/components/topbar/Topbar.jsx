@@ -7,7 +7,11 @@ import { useContext } from "react";
 import axios from "axios";
 
 export default function Topbar({fetchSearchResults}) {
-    const res = axios.get("/users/me");
+    // axios
+    // .get("/users/me", {jwt_token: JSON.parse(localStorage.getItem("token"))})
+    // .then((user)=>{
+    //     localStorage.setItem("username", user.name);
+    // });
     return (
         <div className="topbarPanel">
             <div className="topLeft">

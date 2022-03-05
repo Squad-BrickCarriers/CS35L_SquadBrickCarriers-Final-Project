@@ -1,9 +1,8 @@
 import "./feed.css"
 import Share from "../share/Share"
 import Post from "../post/Post"
-import PostPanel from "../postPanel/PostPanel"
-import RankingIcon from "../rankingIcon/RankingIcon";
 import { useEffect, useState } from "react"
+import { Whatshot } from "@material-ui/icons"
 import axios from "axios"
 
 export default function Feed(){
@@ -12,11 +11,12 @@ export default function Feed(){
     const rankHandler = (e) =>{
         setRank(!rank);
     }
+    
 
     useEffect(() => {
         if(!rank){
             axios
-            .patch('http://localhost:8000/posts/getall', { jwt_token: JSON.parse(localStorage.getItem("token")) })
+            .patch('http://localhost:8000/posts/getall'/*, { jwt_token: JSON.parse(localStorage.getItem("token")) }*/)
             .then(result => {
             console.log("Fetched all posts", result);
             setPosts(result.data);
@@ -36,9 +36,9 @@ export default function Feed(){
             alert(error);
             });
         }
-      }, []);
+      }, [rank, setRank]);
 
-    const postList = posts.map((post) => {
+    const postList = Object.values(posts).map((post) => {
         const postBody = 
           <Post
             key={post._id}
@@ -48,16 +48,20 @@ export default function Feed(){
             liked={post.liked}
          />
          //show posts
-        return postBody;
+        return (postBody);
     })
 
     return(
         <div className="feed">
             <div className="feedWrapper">
                 <Share/>
-                <PostPanel/>
-                <RankingIcon onClick={rankHandler}/>
-                {postList}
+                {/* <div className="postPanel">
+                    <div className="postPanelTop">
+                        <span className="panelText">What's going on recently:</span>
+                        <Whatshot onClick={rankHandler} className="rank"/>  
+                    </div>
+    </div>
+                {postList}*/}
             </div>
         </div>
     )

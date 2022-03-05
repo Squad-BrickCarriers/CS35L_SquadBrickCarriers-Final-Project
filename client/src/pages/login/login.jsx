@@ -27,12 +27,12 @@ export default function Login() {
         { headers: {"content-type": "application/json"} }
         )
         .then((res) => {
-            let token_deserialized=JSON.stringify(res.data);
+            // let token_deserialized=JSON.stringify(res.data);
             if(res.status){
                 localStorage.clear()
-                localStorage.setItem('token',token_deserialized);
+                localStorage.setItem('token',res.data);
                 localStorage.setItem('email',data.email);
-                localStorage.setItem('username',data.name);
+                // localStorage.setItem('username',data.name);
                 //console.log(localStorage.getItem('token'));
                 window.location.href = "/home";
             }

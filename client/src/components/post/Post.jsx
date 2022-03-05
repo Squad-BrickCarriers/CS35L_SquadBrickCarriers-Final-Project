@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 
 export default function Post({post}){
-    const [like, setLike] = useState(post.like)
+    const [like, setLike] = useState(post.likes)
     const [isLiked, setIsLiked] = useState(false)
     const [user, setUser] = useState({})
 
