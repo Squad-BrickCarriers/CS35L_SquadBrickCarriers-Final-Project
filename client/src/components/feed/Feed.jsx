@@ -45,6 +45,7 @@ export default function Feed(){
             id={post._id}
             authorname={post.authorname}
             desc={post.description}
+            anonymous={post.anonymous}
             likes={post.likes}
             liked={post.liked}
          />
@@ -61,7 +62,7 @@ export default function Feed(){
                         <span className="panelText">What's going on recently:</span>
                         <Whatshot onClick={rankHandler} className="rank"/>  
                     </div>
-    </div>
+                </div>
                 {postList}
             </div>
         </div>
