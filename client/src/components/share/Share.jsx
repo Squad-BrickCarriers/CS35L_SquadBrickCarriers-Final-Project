@@ -45,7 +45,7 @@ export default function Share({share}){
             likes: 0,
             anonymous: isAnonymous
         }
-        axios.post("http://localhost:8000/posts/newpost", newPost)
+        axios.post("http://localhost:8000/posts/newpost", newPost, { headers: {'x-auth-token': token, 'max_request_header_size': '10000'} })
         .catch(err => {
             alert(err);
         });

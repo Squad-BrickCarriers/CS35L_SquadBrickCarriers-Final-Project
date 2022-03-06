@@ -3,6 +3,7 @@ const { trimEnd } = require('lodash');
 const router = express.Router();
 const { Post, postValidation } = require('../models/Post');
 const mongoose = require('mongoose');
+const auth = require('../middleware/auth')
 
 // TODO:    1. add status code
 //          2. complete error handling
@@ -61,7 +62,7 @@ router.get('/:postId', async (req, res) => {
 // req: require author(objectId), description(string), likes(integer), 
 //      anonymous(boolean) in the body
 // res: return the added post to '/'
-router.post('/newpost', async (req, res) => {
+router.post('/newpost', auth, async (req, res) => {
     const { error } = postValidation(req.body);
     if (error) return res.json(error);
 
