@@ -5,7 +5,25 @@ import axios from "axios";
 
 export default function Share({share}){
     const token = localStorage.getItem("token");
-    const user = axios.get("http://localhost:8000/users/me", {headers:{'x-auth-token': token, 'max_request_header_size': '10000'}});
+
+    let username;
+    let userid;
+    const sendGetRequest = async () => {
+        try {
+            const user = await axios.get("http://localhost:8000/users/me", { headers: {'x-auth-token': token, 'max_request_header_size': '10000'} });
+            username = user.data.name;
+            userid = user.data._id;
+            console.log(user.data);
+        } catch (err) {
+            // Handle Error Here
+            console.error(err);
+        }
+    };
+    
+    sendGetRequest();
+
+    // const user = axios.get("http://localhost:8000/users/me", { headers: {'x-auth-token': token, 'max_request_header_size': '10000'} });
+    // user.then(data => ( = data));
     // TODO: store user data
     const desc = useRef()
     const[isAnonymous, setAnonymous] = useState(false)
@@ -18,8 +36,11 @@ export default function Share({share}){
         submit.preventDefault();
         const newPost = {
             // Check here
-            authorname: user.data.name,
-            author: user.data._id,
+            // authorname: user.data.name,
+            // authorname: user.data.name,
+            // author: user.data._id,
+            authorname: username,
+            author: userid,
             description: desc.current.value,
             likes: 0,
             anonymous: isAnonymous
