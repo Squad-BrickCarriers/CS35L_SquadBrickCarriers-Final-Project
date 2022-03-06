@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Joi = require('joi-oid');
 
 const PostSchema = mongoose.Schema({
+    authorname: {
+        type: String,
+        required: true
+    }, 
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -37,6 +41,7 @@ const PostSchema = mongoose.Schema({
 
 const postValidation = post => {
     const schema = Joi.object({
+        authorname: Joi.string().required(),
         author: Joi.objectId().required(),
         description: Joi.string().required().min(1).max(2000),
         likes: Joi.number().integer().required(),

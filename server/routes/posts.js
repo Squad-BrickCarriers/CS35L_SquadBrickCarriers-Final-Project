@@ -66,6 +66,7 @@ router.post('/newpost', async (req, res) => {
     if (error) return res.json(error);
 
     const post = new Post({
+        authorname: req.body.authorname,
         author: req.body.author,
         description: req.body.description,
         likes: req.body.likes,

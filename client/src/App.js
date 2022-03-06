@@ -57,7 +57,7 @@ function App() {
         <Route path='/home' element={<Home/>} />
         <Route path="/search" render={(props) => <Search {...props} searchResults={searchResults} fetchSearchResults={fetchSearchResults} />}/>
       </Routes>
-    </Router >
+    </Router>
     </div>
   );
 

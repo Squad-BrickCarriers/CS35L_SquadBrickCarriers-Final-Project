@@ -5,7 +5,8 @@ import axios from "axios";
 
 export default function Share({share}){
     const token = localStorage.getItem("token");
-    const user = axios.get("/users/me", {'x-auth-token': token})
+    const user = axios.get("http://localhost:8000/users/me", {headers:{'x-auth-token': token, 'max_request_header_size': '10000'}});
+    // TODO: store user data
     const desc = useRef()
     const[isAnonymous, setAnonymous] = useState(false)
 
@@ -16,12 +17,14 @@ export default function Share({share}){
     const submitHandler = async (submit) => {
         submit.preventDefault();
         const newPost = {
-            author: user.name,
+            // Check here
+            authorname: user.data.name,
+            author: user.data._id,
             description: desc.current.value,
             likes: 0,
             anonymous: isAnonymous
         }
-        axios.post("/posts/newpost", newPost)
+        axios.post("http://localhost:8000/posts/newpost", newPost)
         .catch(err => {
             alert(err);
         });
