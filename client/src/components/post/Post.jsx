@@ -2,10 +2,11 @@ import "./post.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-export default function Post({post}){
+export default function Post(post){
+    console.log(post);
+    
     const [like, setLike] = useState(post.likes)
     const [isLiked, setIsLiked] = useState(false)
-    const [user, setUser] = useState({})
 
     const likeHandler=()=>{
         setLike(isLiked ? like-1 : like+1)
@@ -13,11 +14,7 @@ export default function Post({post}){
     }
 
     useEffect(()=>{
-        const fetchUser = async()=>{
-            const res = await axios.get(`users/${post.userId}`)
-            setUser(res.data);
-        };
-        fetchUser();
+        
     },[])
 
     return( 
@@ -25,7 +22,7 @@ export default function Post({post}){
             <div className="postWrapper">
                 <div className="postTop">
                     <span className="postName">
-                        {post.anonymous ? "Anonymous User" : user.username}
+                        {post.anonymous ? "Anonymous User" : post.authorname}
                     </span>
                     <span className="postDate">
                         {post.date}

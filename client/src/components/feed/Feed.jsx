@@ -8,7 +8,7 @@ import axios from "axios"
 export default function Feed(){
     const [posts, setPosts] = useState([])
     const[rank, setRank] = useState(false)
-    const rankHandler = (e) =>{
+    const rankHandler = () =>{
         setRank(!rank);
     }
     
@@ -16,7 +16,7 @@ export default function Feed(){
     useEffect(() => {
         if(!rank){
             axios
-            .patch('http://localhost:8000/posts/getall'/*, { jwt_token: JSON.parse(localStorage.getItem("token")) }*/)
+            .get('http://localhost:8000/posts/getall'/*, { jwt_token: JSON.parse(localStorage.getItem("token")) }*/)
             .then(result => {
             console.log("Fetched all posts", result);
             setPosts(result.data);
@@ -27,7 +27,7 @@ export default function Feed(){
         }
         else{
             axios
-            .patch('http://localhost:8000/posts/rank', { jwt_token: JSON.parse(localStorage.getItem("token")) })
+            .get('http://localhost:8000/posts/rank')
             .then(result => {
             console.log("Fetched ranked posts", result);
             setPosts(result.data);
@@ -38,11 +38,12 @@ export default function Feed(){
         }
       }, [rank, setRank]);
 
-    const postList = Object.values(posts).map((post) => {
+    const postList = posts.map(post => {
         const postBody = 
           <Post
             key={post._id}
             id={post._id}
+            authorname={post.authorname}
             desc={post.description}
             likes={post.likes}
             liked={post.liked}
@@ -55,13 +56,13 @@ export default function Feed(){
         <div className="feed">
             <div className="feedWrapper">
                 <Share/>
-                {/* <div className="postPanel">
+                <div className="postPanel">
                     <div className="postPanelTop">
                         <span className="panelText">What's going on recently:</span>
                         <Whatshot onClick={rankHandler} className="rank"/>  
                     </div>
     </div>
-                {postList}*/}
+                {postList}
             </div>
         </div>
     )

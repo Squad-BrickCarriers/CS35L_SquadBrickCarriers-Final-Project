@@ -1,9 +1,10 @@
 import "./share.css"
 import { MailOutline } from "@material-ui/icons"
-import { useContext, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import axios from "axios";
 
-export default function Share({share}){
+
+export default function Share(){
     const token = localStorage.getItem("token");
 
     let username;
@@ -12,6 +13,7 @@ export default function Share({share}){
         try {
             const user = await axios.get("http://localhost:8000/users/me", { headers: {'x-auth-token': token, 'max_request_header_size': '10000'} });
             username = user.data.name;
+            localStorage.setItem("username", username)
             userid = user.data._id;
             console.log(user.data);
         } catch (err) {
@@ -50,6 +52,7 @@ export default function Share({share}){
             alert(err);
         });
         console.log(newPost)
+        window.location.reload();
       }
 
     return(

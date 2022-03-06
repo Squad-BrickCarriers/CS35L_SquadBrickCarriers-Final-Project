@@ -32,7 +32,7 @@ export default function Topbar({fetchSearchResults}) {
 
                 {/* !FIXME Link to personal profile or login page */}
                 <Link to="/login" style={{textDecoration: "none"}}>
-                    <span className="username">{localStorage.getItem("email")}</span>
+                    <span className="username">{localStorage.getItem("username")}</span>
                 </Link>
             </div>
         </div>
