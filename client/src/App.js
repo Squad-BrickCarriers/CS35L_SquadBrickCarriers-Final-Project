@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useContext } from "react";
 
-import Home from "./pages/home/home";
+import Home from "./pages/home/Home";
 import Login from "./pages/login/login";
 import Signup from "./pages/signup/signup";
 import Search from "./pages/search/search";
