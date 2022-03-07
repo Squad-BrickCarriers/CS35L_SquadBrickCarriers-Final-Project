@@ -3,7 +3,7 @@
 
 import "./login.css"
 import { useContext, useRef } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../components/context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import axios from "axios";
