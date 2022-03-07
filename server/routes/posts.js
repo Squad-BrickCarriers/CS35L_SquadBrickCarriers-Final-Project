@@ -33,12 +33,13 @@ router.get('/rank', async (req, res) => {
 })
 
 // Select posts by keywords
-// req: require keyword in the body
+// req: require keyword in the params
 // res: return all posts that contain the keyword in the description 
 //      to '/search' in the order of posted time
 router.get('/search', async (req, res) => {
     try {
-        const posts = await Post.find({ description: { $regex: RegExp(req.body.keyword), $options: 'i' } })
+        let keyword = req.query.keyword;
+        const posts = await Post.find({ description: { $regex: RegExp(keyword), $options: 'i' } })
             .sort('-postdate').populate('author', 'name');
         res.json(posts);
     } catch (err) {

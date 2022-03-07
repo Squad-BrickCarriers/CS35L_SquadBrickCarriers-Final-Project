@@ -35,9 +35,9 @@ function App() {
   //to fetch search results
   const fetchSearchResults = (searchWord) => {
     axios
-      .post('http://localhost:8000/posts/search', { jwt_token: JSON.parse(localStorage.getItem("token")), keyword: searchWord })
+      .get('http://localhost:8000/posts/search', { params: { keyword: searchWord } } )
       .then((results) => {
-        console.log(results);
+        console.log(results.data);
         setSearchResults(results.data);
       })
       .catch((error => {
