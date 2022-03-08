@@ -27,7 +27,7 @@ export default function Post(post){
         try{
             console.log(post);
             // console.log(user);
-            axios.patch("http://localhost:8000/posts/"+post.id+"/like", {id: user._id});
+            axios.patch("http://localhost:8000/posts/"+post.id+"/like", {id: user._id}, { headers: {'x-auth-token': localStorage.getItem("token"), 'max_request_header_size': '10000'} });
             axios
             .get("http://localhost:8000/posts/"+post.id+"/check-like", {params: {id: user._id}})
             .then((res)=>{

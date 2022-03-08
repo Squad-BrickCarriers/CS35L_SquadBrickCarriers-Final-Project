@@ -64,7 +64,7 @@ router.get('/:postId', async (req, res) => {
 // Like/Unlike a post
 // req: require postId in the parameter and the id in the body
 // res: return the selected post with likes and liked_users updated
-router.patch('/:postId/like', async (req, res) => {
+router.patch('/:postId/like', auth, async (req, res) => {
     try {
         const userid = mongoose.Types.ObjectId(req.body.id);
         const post = await Post.findById(req.params.postId).populate('author', 'name');
