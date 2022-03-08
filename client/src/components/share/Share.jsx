@@ -22,7 +22,7 @@ export default function Share(){
         }
     };
     sendGetRequest();
-}, [user, setUser]);
+}, []);
 
 
     // const user = axios.get("http://localhost:8000/users/me", { headers: {'x-auth-token': token, 'max_request_header_size': '10000'} });

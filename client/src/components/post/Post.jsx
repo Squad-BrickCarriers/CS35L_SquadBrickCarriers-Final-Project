@@ -10,19 +10,17 @@ export default function Post(post){
     let isLiked;
 
     useEffect(() => {
-    const sendGetRequest = async () => {
-        try {
-            const res = await axios.get("http://localhost:8000/users/me", { headers: {'x-auth-token': localStorage.getItem("token"), 'max_request_header_size': '10000'} });
-            // localStorage.setItem("username", username)
+        axios.get("http://localhost:8000/users/me", { headers: {'x-auth-token': localStorage.getItem("token"), 'max_request_header_size': '10000'} })
+        // localStorage.setItem("username", username)
+        .then((res)=>{
             setUser(res.data);
-            // console.log(user.data);
-        } catch (err) {
+        // console.log(user.data);
+        })
+        .catch((err)=>{
             // Handle Error Here
             console.error(err);
-        }
-    };
-    sendGetRequest();
-}, [user, setUser]);
+        })
+    }, []);
 
 
     const likeHandler= ()=>{
