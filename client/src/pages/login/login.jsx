@@ -24,26 +24,27 @@ export default function Login() {
             password: password.current.value,
         };
         axios
-            .post(
-                'http://localhost:8000/auth/login',
-                data,
-                { headers: { "content-type": "application/json" } }
-            )
-            .then((res) => {
-                // let token_deserialized=JSON.stringify(res.data);
-                if (res.status) {
-                    localStorage.clear()
-                    localStorage.setItem('token', res.data);
-                    localStorage.setItem('email', data.email);
-                    // localStorage.setItem('username',data.name);
-                    //console.log(localStorage.getItem('token'));
-                    window.location.href = "/home";
-                }
-            })
-            .catch(() => {
-                localStorage.clear();
-                alert("Incorrect Password or Username");
-            });
+        .post(
+        'http://localhost:8000/auth/login', 
+        data, 
+        { headers: {"content-type": "application/json"} }
+        )
+        .then((res) => {
+            // let token_deserialized=JSON.stringify(res.data);
+            if(res.status){
+                localStorage.clear()
+                localStorage.setItem('token',res.data.token);
+                localStorage.setItem('email',data.email);
+                localStorage.setItem('username',res.data.name);
+                // localStorage.setItem('username',data.name);
+                //console.log(localStorage.getItem('token'));
+                window.location.href = "/home";
+            }
+        })
+        .catch(()=>{
+            localStorage.clear();
+            alert("Incorrect Password or Username");
+        });
     };
 
     // Use useEffect hook to start the animation.

@@ -19,12 +19,11 @@ export default function SearchBar({ fetchSearchResults }){
             onChange={searchHandler}
             required
             />
-            <Search onClick={() => { fetchSearchResults(keyword);}} 
-            className="searchIcon">
                 <Link to="/search" style={{ textDecoration: 'none' }}>
-                    <i className="fas fa-search"></i>
+                <Search onClick={() => { fetchSearchResults(keyword);}} 
+                className="searchIcon">
+                </Search>
                 </Link>
-            </Search>
         </form>
     );
 }

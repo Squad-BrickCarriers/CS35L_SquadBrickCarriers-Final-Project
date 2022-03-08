@@ -33,18 +33,20 @@ router.get('/rank', async (req, res) => {
 })
 
 // Select posts by keywords
-// req: require keyword in the body
+// req: require keyword in the params
 // res: return all posts that contain the keyword in the description 
 //      to '/search' in the order of posted time
 router.get('/search', async (req, res) => {
     try {
-        const posts = await Post.find({ description: { $regex: RegExp(req.body.keyword), $options: 'i' } })
+        let keyword = req.query.keyword;
+        const posts = await Post.find({ description: { $regex: RegExp(keyword), $options: 'i' } })
             .sort('-postdate').populate('author', 'name');
         res.json(posts);
     } catch (err) {
         res.json({ message: err });
     }
 })
+
 
 // Select a post
 // req: require postId in the parameter
@@ -57,6 +59,76 @@ router.get('/:postId', async (req, res) => {
         res.json({ message: err });
     }
 })
+
+
+// Like/Unlike a post
+// req: require postId in the parameter and the id in the body
+// res: return the selected post with likes and liked_users updated
+router.patch('/:postId/like', async (req, res) => {
+    try {
+        const userid = mongoose.Types.ObjectId(req.body.id);
+        const post = await Post.findById(req.params.postId).populate('author', 'name');
+
+        let existed = false;
+        for (let i = 0; i < post.liked_users.length; i++) {
+            var id = mongoose.Types.ObjectId(post.liked_users[i]);
+            if (id.equals(userid)) {
+                existed = true;
+                break;
+            }
+        }
+
+        if (existed) {
+            post.liked_users = post.liked_users.filter(id => !id.equals(userid));
+            post.likes--;
+        } else {
+            post.liked_users.push(userid);
+            post.likes++;
+            console.log("like succeeds")
+        }
+
+        const savedPost = await post.save();
+        res.json(savedPost);
+    } catch (err) {
+        res.json({ message: err });
+    }
+    // try{
+    //     console.log(req.body.username);
+    //     const post = await Post.findById(req.params.postId);
+    //     if(!post.liked_users.includes(req.body.username)){
+    //         await post.updateOne({ $push: {liked_users : req.body.username }});
+    //         post.likes++;
+    //         res.status(200).json("The post has been liked");
+    //     } else {
+    //         await post.updateOne({ $pull: { liked_users: req.body.username }});
+    //         post.likes--;
+    //         res.status(200).json("The post has been disliked");
+    //     }
+    // } catch (err){
+    //     res.status(500).json(err);
+    // }
+});
+
+router.get('/:postId/check-like', async (req, res) => {
+    try {
+        const userid = mongoose.Types.ObjectId(req.query.id);
+        const post = await Post.findById(req.params.postId).populate('author', 'name');
+
+        let existed = false;
+        for (let i = 0; i < post.liked_users.length; i++) {
+            var id = mongoose.Types.ObjectId(post.liked_users[i]);
+            if (id.equals(userid)) {
+                existed = true;
+                break;
+            }
+        }
+        res.send(existed);
+    } catch (err) {
+        res.json({ message: err });
+    }
+});
+
+
 
 // Add a post
 // req: require author(objectId), description(string), likes(integer), 
@@ -94,36 +166,6 @@ router.delete('/:postId', async (req, res) => {
     }
 })
 
-// Like/Unlike a post
-// req: require postId in the parameter and the id in the body
-// res: return the selected post with likes and liked_users updated
-router.patch('/:postId', async (req, res) => {
-    try {
-        const userid = mongoose.Types.ObjectId(req.body.id);
-        const post = await Post.findById(req.params.postId).populate('author', 'name');
 
-        let existed = false;
-        for (let i = 0; i < post.liked_users.length; i++) {
-            var id = mongoose.Types.ObjectId(post.liked_users[i]);
-            if (id.equals(userid)) {
-                existed = true;
-                break;
-            }
-        }
-
-        if (existed) {
-            post.liked_users = post.liked_users.filter(id => !id.equals(userid));
-            post.likes--;
-        } else {
-            post.liked_users.push(userid);
-            post.likes++;
-        }
-
-        const savedPost = await post.save();
-        res.json(savedPost);
-    } catch (err) {
-        res.json({ message: err });
-    }
-})
 
 module.exports = router;

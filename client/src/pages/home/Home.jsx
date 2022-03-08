@@ -7,7 +7,7 @@ import "./home.css"
 export default function Home({ fetchSearchResults }){
     return(
     <>
-        <Topbar/>
+        <Topbar fetchSearchResults={fetchSearchResults}/>
         <div className="homeContainer">
             <Margin/>
             <Feed/>

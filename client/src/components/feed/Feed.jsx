@@ -18,7 +18,7 @@ export default function Feed(){
             axios
             .get('http://localhost:8000/posts/getall'/*, { jwt_token: JSON.parse(localStorage.getItem("token")) }*/)
             .then(result => {
-            console.log("Fetched all posts", result);
+            // console.log("Fetched all posts", result);
             setPosts(result.data);
             })
             .catch(error => {
@@ -29,7 +29,7 @@ export default function Feed(){
             axios
             .get('http://localhost:8000/posts/rank')
             .then(result => {
-            console.log("Fetched ranked posts", result);
+            // console.log("Fetched ranked posts", result);
             setPosts(result.data);
             })
             .catch(error => {
@@ -47,7 +47,7 @@ export default function Feed(){
             desc={post.description}
             anonymous={post.anonymous}
             likes={post.likes}
-            liked={post.liked}
+            liked_users={post.liked_users}
          />
          //show posts
         return (postBody);

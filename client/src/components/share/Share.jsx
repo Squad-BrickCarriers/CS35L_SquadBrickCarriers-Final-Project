@@ -1,28 +1,29 @@
 import "./share.css"
 import { MailOutline } from "@material-ui/icons"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import axios from "axios";
 
 
 export default function Share(){
-    const token = localStorage.getItem("token");
+    const [user, setUser] = useState({})
 
-    let username;
-    let userid;
+    
+    useEffect(() => {
     const sendGetRequest = async () => {
         try {
-            const user = await axios.get("http://localhost:8000/users/me", { headers: {'x-auth-token': token, 'max_request_header_size': '10000'} });
-            username = user.data.name;
-            localStorage.setItem("username", username)
-            userid = user.data._id;
-            console.log(user.data);
+            const res = await axios.get("http://localhost:8000/users/me", { headers: {'x-auth-token': localStorage.getItem("token"), 'max_request_header_size': '10000'} });
+            setUser(res.data);
+            // localStorage.setItem("username", username)
+            
+            // console.log(user.data);
         } catch (err) {
             // Handle Error Here
             console.error(err);
         }
     };
-    
     sendGetRequest();
+}, []);
+
 
     // const user = axios.get("http://localhost:8000/users/me", { headers: {'x-auth-token': token, 'max_request_header_size': '10000'} });
     // user.then(data => ( = data));
@@ -41,13 +42,13 @@ export default function Share(){
             // authorname: user.data.name,
             // authorname: user.data.name,
             // author: user.data._id,
-            authorname: username,
-            author: userid,
+            authorname: user.name,
+            author: user._id,
             description: desc.current.value,
             likes: 0,
             anonymous: isAnonymous
         }
-        axios.post("http://localhost:8000/posts/newpost", newPost, { headers: {'x-auth-token': token, 'max_request_header_size': '10000'} })
+        axios.post("http://localhost:8000/posts/newpost", newPost, { headers: {'x-auth-token': localStorage.getItem("token"), 'max_request_header_size': '10000'} })
         .catch(err => {
             alert(err);
         });
@@ -61,7 +62,7 @@ export default function Share(){
                 <div className="shareWrapper">
                     <div className="shareTop">
                         <MailOutline className="postIcon" htmlColor="purple"/>
-                        <input 
+                        <textarea 
                         type="text"
                         placeholder="Share what's in your mind!" 
                         ref={desc}
