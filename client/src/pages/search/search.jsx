@@ -1,4 +1,6 @@
 import Post from "../../components/post/Post";
+import Margin from "../../components/margin/Margin";
+import Scrollbar from "../../components/scrollbar/Scrollbar";
 import Topbar from "../../components/topbar/Topbar";
 
 export default function Search({searchResults, fetchSearchResults}){
@@ -19,8 +21,14 @@ export default function Search({searchResults, fetchSearchResults}){
     return(
         <>
         <Topbar fetchSearchResults={fetchSearchResults}/>
-        <div>
-            {displayList}
+        <div className="homeContainer">
+            <Margin/>
+            <div className="feed">
+            <div className="feedWrapper">
+                {displayList}
+            </div>
+        </div>
+            <Scrollbar/>
         </div>
         </>
     );

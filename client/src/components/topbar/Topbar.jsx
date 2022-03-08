@@ -16,7 +16,7 @@ export default function Topbar({fetchSearchResults}) {
         <div className="topbarPanel">
             <div className="topLeft">
                 {/*Refresh on click?*/}
-                <Link to="/" style={{textDecoration: "none"}}>
+                <Link to="/home" style={{textDecoration: "none"}}>
                     <span className="logo">TreeHole</span>
                 </Link>
             </div>
