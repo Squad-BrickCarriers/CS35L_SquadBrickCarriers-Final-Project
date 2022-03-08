@@ -24,10 +24,11 @@
 }
 
 .shareInput{
-    width: 80%;
+    width: 88%;
     height: 70px;
     border: none;
     margin-left: 10px;
+    margin-top: 50px;
 }
 
 .shareInput:focus{

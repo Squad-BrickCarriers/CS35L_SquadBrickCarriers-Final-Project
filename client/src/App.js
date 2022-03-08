@@ -33,9 +33,10 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
 
   //to fetch search results
+  // let keyword;
   const fetchSearchResults = (searchWord) => {
     axios
-      .get('http://localhost:8000/posts/search', { params: { keyword: searchWord } } )
+      .get('http://localhost:8000/posts/search', { keyword: searchWord } )
       .then((results) => {
         console.log(results.data);
         setSearchResults(results.data);
@@ -54,8 +55,8 @@ function App() {
         <Route exact path='/' element={user ? <Home /> : <Signup />} />
         <Route path='/login' element={user ? <Navigate to="/" /> : <Login />} />
         <Route path='/signup' element={user ? <Navigate to="/login" /> : <Signup />} />
-        <Route path='/home' element={<Home/>} />
-        <Route path="/search" render={(props) => <Search {...props} searchResults={searchResults} fetchSearchResults={fetchSearchResults} />}/>
+        <Route path='/home' element={<Home fetchSearchResults={fetchSearchResults}/>} />
+        <Route path="/search" element={<Search searchResults={searchResults} fetchSearchResults={fetchSearchResults} />}/>
       </Routes>
     </Router>
     </div>

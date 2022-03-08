@@ -30,9 +30,15 @@
     font-size: 14px;
 }
 
+
+.postText:focus{
+    outline: none;
+}
+
 .postCenter{
     margin-top: 10px;
 }
+
 
 .postBottom{
     margin-top: 20px;

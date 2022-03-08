@@ -2,8 +2,6 @@ import "./topbar.css";
 import SearchBar from "../searchBar/searchBar";
 import { Person } from "@material-ui/icons"
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
-import { useContext } from "react";
 import axios from "axios";
 
 export default function Topbar({fetchSearchResults}) {
@@ -12,6 +10,8 @@ export default function Topbar({fetchSearchResults}) {
     // .then((user)=>{
     //     localStorage.setItem("username", user.name);
     // });
+    
+    
     return (
         <div className="topbarPanel">
             <div className="topLeft">
