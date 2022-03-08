@@ -34,9 +34,10 @@ function App() {
 
   //to fetch search results
   // let keyword;
+  //let SearchResult = [];
   const fetchSearchResults = (searchWord) => {
     axios
-      .get('http://localhost:8000/posts/search', { keyword: searchWord } )
+      .get('http://localhost:8000/posts/search', {params:{ keyword: searchWord }} )
       .then((results) => {
         console.log(results.data);
         setSearchResults(results.data);
