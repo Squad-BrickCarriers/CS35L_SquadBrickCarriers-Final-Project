@@ -73,7 +73,7 @@ export default function Login() {
                             anonymous
                         </div>
                         <span className="loginDesc">
-                            social space.
+                            social space
                         </span>
                     </div>
 
