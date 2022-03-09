@@ -1,18 +1,24 @@
 <div align="center">
 
-# Treehole
+<h1 style="color: #9783f0">Treehole<h2>
 <!-- add a logo? -->
 
-Treehole is a web-based **anonymous** social space where users can post anything they want to disclose and receive likes and comments for their posts.
+## Treehole is a web-based **anonymous** social space where users can post anything they want to disclose and receive likes and comments for their posts.
 
 [Getting started](#getting-started) •
-[Roadmap](#roadmap) •
+[Documents](#documents) •
 [Credit](#credit) 
 
 </div>
 
 <!-- Core features -->
 ## Features
+- <p style="text-align:left;">
+    Sign In / Sign Up:
+    <span style="float:right;">
+        get accounts to use the app
+    </span>
+</p>
 
 - <p style="text-align:left;">
     Ranking List:
@@ -24,14 +30,14 @@ Treehole is a web-based **anonymous** social space where users can post anything
 - <p style="text-align:left;">
     Post Search: 
     <span style="float:right;">
-        Filtered by Keyword
+        find specific posts filtered by keyword
     </span>
 </p>
 
 - <p style="text-align:left;">
     Like: 
     <span style="float:right;">
-        Filtered by Keyword
+        show your support to a post
     </span>
 </p>
 
@@ -39,8 +45,7 @@ Treehole is a web-based **anonymous** social space where users can post anything
 <p align="left">
 
 We found many communications online during covid were not **sincere**. We want to create a safe and equal space for everyone to share whatever they like, in which people focus on the ideas instead of who they are.
-</p>
-</br>
+</p></br>
 
 # Getting Started
 
@@ -48,12 +53,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory client/ **and** server/, you can run terminal commands:
+
+### `npm install` 
+Install dependencies.
 
 ### `npm start` 
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+For backend the port is 8000 instead of 3000
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
@@ -115,16 +125,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 </br>
 
-# Roadmap
+# Documents
 
 - <p style="text-align:left;">
     
     [Design Board on Miro](https://miro.com/app/board/uXjVOP-hrbQ=/?invite_link_id=498338953626)
-    <span style="float:right;">
+    <span style="float:right">
         (documents included)
     </span>
-</p>
-</br>
+
+- [Presentation Slide](https://docs.google.com/presentation/d/1vys0ncGv7w9CQ82dOWoibrLCnpKkCWSWFj8tCSvryEw/edit?usp=sharing)
+</p></br>
 
 # Credit
 

@@ -16,13 +16,13 @@ import { AuthContext } from "./components/context/AuthContext";
 
 function App() {
   // Redirect users if they are not logged in
-  useEffect(()=>{
+  useEffect(() => {
     if (window.location.href !== "http://localhost:3000/signup" &&
-    window.location.href !== "http://localhost:3000/login" &&
-    window.location.href !== "http://localhost:3000/" &&
-    !localStorage.getItem('token')){
+      window.location.href !== "http://localhost:3000/login" &&
+      window.location.href !== "http://localhost:3000/" &&
+      !localStorage.getItem('token')) {
       alert("You are not Logged in! Sign up if you don't have an account");
-      window.location='/signup';
+      window.location = '/signup';
     }
   });
 
@@ -37,7 +37,7 @@ function App() {
   //let SearchResult = [];
   const fetchSearchResults = (searchWord) => {
     axios
-      .get('http://localhost:8000/posts/search', {params:{ keyword: searchWord }} )
+      .get('http://localhost:8000/posts/search', { params: { keyword: searchWord } })
       .then((results) => {
         console.log(results.data);
         setSearchResults(results.data);
@@ -50,16 +50,16 @@ function App() {
   return (
     //!Notice the format update of React Router V6
     <div className="app">
-    <Router>
-      <Routes>
-        {/* Can not see the homepage without the user credentials.*/}
-        <Route exact path='/' element={user ? <Home /> : <Signup />} />
-        <Route path='/login' element={user ? <Navigate to="/" /> : <Login />} />
-        <Route path='/signup' element={user ? <Navigate to="/login" /> : <Signup />} />
-        <Route path='/home' element={<Home fetchSearchResults={fetchSearchResults}/>} />
-        <Route path="/search" element={<Search searchResults={searchResults} fetchSearchResults={fetchSearchResults} />}/>
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          {/* Can not see the homepage without the user credentials.*/}
+          <Route exact path='/' element={user ? <Home /> : <Signup />} />
+          <Route path='/login' element={user ? <Navigate to="/" /> : <Login />} />
+          <Route path='/signup' element={user ? <Navigate to="/login" /> : <Signup />} />
+          <Route path='/home' element={<Home fetchSearchResults={fetchSearchResults} />} />
+          <Route path="/search" element={<Search searchResults={searchResults} fetchSearchResults={fetchSearchResults} />} />
+        </Routes>
+      </Router>
     </div>
   );
 

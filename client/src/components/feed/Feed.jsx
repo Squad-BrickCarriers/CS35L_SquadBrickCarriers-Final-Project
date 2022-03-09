@@ -5,62 +5,52 @@ import { useEffect, useState } from "react"
 import { Whatshot } from "@material-ui/icons"
 import axios from "axios"
 
-export default function Feed(){
+export default function Feed() {
     const [posts, setPosts] = useState([])
-    const[rank, setRank] = useState(false)
-    const rankHandler = () =>{
+    const [rank, setRank] = useState(false)
+    const rankHandler = () => {
         setRank(!rank);
     }
-    
+
 
     useEffect(() => {
-        if(!rank){
-            axios
-            .get('http://localhost:8000/posts/getall'/*, { jwt_token: JSON.parse(localStorage.getItem("token")) }*/)
+        let address_str = (!rank) ? "http://localhost:8000/posts/getall" : 'http://localhost:8000/posts/rank';
+        axios
+            .get(address_str/*, { jwt_token: JSON.parse(localStorage.getItem("token")) }*/)
+
             .then(result => {
-            // console.log("Fetched all posts", result);
-            setPosts(result.data);
+                // console.log("Fetched all posts", result);
+                setPosts(result.data);
             })
             .catch(error => {
-            alert(error);
+                alert(error);
             });
-        }
-        else{
-            axios
-            .get('http://localhost:8000/posts/rank')
-            .then(result => {
-            // console.log("Fetched ranked posts", result);
-            setPosts(result.data);
-            })
-            .catch(error => {
-            alert(error);
-            });
-        }
-      }, [rank, setRank]);
+
+    }, [rank, setRank]);
 
     const postList = posts.map(post => {
-        const postBody = 
-          <Post
-            key={post._id}
-            id={post._id}
-            authorname={post.authorname}
-            desc={post.description}
-            anonymous={post.anonymous}
-            likes={post.likes}
-            liked_users={post.liked_users}
-         />
-         //show posts
+        const postBody =
+            <Post
+                key={post._id}
+                id={post._id}
+                authorname={post.authorname}
+                desc={post.description}
+                anonymous={post.anonymous}
+                likes={post.likes}
+                liked_users={post.liked_users}
+            />
+        //show posts
         return (postBody);
     })
 
-    return(
+    return (
         <div className="feed">
             <div className="feedWrapper">
-                <Share/>
+                <Share />
                 <div className="postPanel">
                     <div className="postPanelTop">
                         <span className="panelText">What's going on recently:</span>
-                        <Whatshot onClick={rankHandler} className="rank"/>  
+                        <Whatshot onClick={rankHandler} className="rank" />
                     </div>
                 </div>
                 {postList}
