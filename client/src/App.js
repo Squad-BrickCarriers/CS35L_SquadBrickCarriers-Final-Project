@@ -36,15 +36,20 @@ function App() {
   // let keyword;
   //let SearchResult = [];
   const fetchSearchResults = (searchWord) => {
-    axios
-      .get('http://localhost:8000/posts/search', { params: { keyword: searchWord } })
-      .then((results) => {
-        console.log(results.data);
-        setSearchResults(results.data);
-      })
-      .catch((error => {
-        alert(error);
-      }))
+    if(searchWord != ""){
+      axios
+        .get('http://localhost:8000/posts/search', { params: { keyword: searchWord } })
+        .then((results) => {
+          console.log(results.data);
+          setSearchResults(results.data);
+        })
+        .catch((error => {
+          alert(error);
+        }))
+    } else {
+      alert("keyword required");
+      window.location = "/home"
+    }
   }
 
   return (
