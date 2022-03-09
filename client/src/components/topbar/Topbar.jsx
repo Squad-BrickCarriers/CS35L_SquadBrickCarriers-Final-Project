@@ -30,7 +30,7 @@ export default function Topbar({ fetchSearchResults }) {
             </div>
             <div className="topRight">
                 {/* <Link to="/login" > */}
-                <span className="logout" onClick={logoutHandler}>log out</span>
+                <i className="logout" onClick={logoutHandler}>Log Out</i>
                 {/* </Link> */}
 
                 <Link to="/login" >

@@ -71,7 +71,7 @@ export default function Share(){
                         />
                     </div>
                     <hr className="shareHr"></hr>
-                    <div className="shareBottom">
+                    <div className="anonBotton">
                         <div className="option">
                             make this anonymous
                             <input 
