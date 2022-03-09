@@ -47,12 +47,18 @@
     flex: 5
 }
 
+.logout{
+    font-size: 15px;
+    cursor: pointer;
+    color: white;
+    margin-left: 250px;
+}
 
 .PersonIcon{
     color: white;
     font-size: 30px !important;
     cursor: pointer;
-    margin-left: 300px;
+    margin-left: 10px;
 }
 
 .username{

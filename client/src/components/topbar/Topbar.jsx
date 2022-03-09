@@ -10,6 +10,12 @@ export default function Topbar({fetchSearchResults}) {
     // .then((user)=>{
     //     localStorage.setItem("username", user.name);
     // });
+
+    const logoutHandler = async (logout) =>{
+        logout.preventDefault();
+        localStorage.clear();
+        window.location='/login';
+    }
     
     
     return (
@@ -25,6 +31,10 @@ export default function Topbar({fetchSearchResults}) {
             </div>
             <div className="topRight">
                 {/* Link to login page */}
+
+                {/* <Link to="/login" > */}
+                    <span className="logout" onClick={logoutHandler}>log out</span>
+                {/* </Link> */}
 
                 <Link to="/login" >
                     <Person className="PersonIcon" />
