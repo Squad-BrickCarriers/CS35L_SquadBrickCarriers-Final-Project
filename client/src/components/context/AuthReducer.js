@@ -1,26 +1,47 @@
+// Reference:
+// https://youtu.be/pFHyZvVxce0
+
 const AuthReducer = (state, action) => {
-    switch(action, type){
+    switch (action.type) {
         case "LOGIN_START":
-            return{
+            return {
                 user: null,
-                isFetching :true,
+                isFetching: true,
                 error: false,
             };
         case "LOGIN_SUCCESS":
-            return{
+            return {
                 user: action.payload,
-                isFetching :false,
+                isFetching: false,
                 error: false,
             };
-        case "LOGIN_SUCCESS":
-            return{
+        case "LOGIN_FAILURE":
+            return {
                 user: null,
-                isFetching :false,
-                error: action.payload,
+                isFetching: false,
+                error: true,
+            };
+        case "FOLLOW":
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    followings: [...state.user.followings, action.payload],
+                },
+            };
+        case "UNFOLLOW":
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    followings: state.user.followings.filter(
+                        (following) => following !== action.payload
+                    ),
+                },
             };
         default:
-            return state;   
+            return state;
     }
 };
 
-export default AuthReducer;
+export default AuthReducer
