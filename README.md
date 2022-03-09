@@ -53,7 +53,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory client/ **and** server/, you can run terminal commands:
+In the project directories '/client' **and** '/server', you can run terminal commands:
 
 ### `npm install` 
 Install dependencies.
