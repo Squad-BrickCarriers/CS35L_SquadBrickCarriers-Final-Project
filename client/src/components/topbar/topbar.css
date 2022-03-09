@@ -51,25 +51,27 @@
     font-size: 15px;
     cursor: pointer;
     color: white;
-    margin-left: 250px;
+    margin-right: 5px;
 }
 
 .PersonIcon{
     color: white;
     font-size: 30px !important;
     cursor: pointer;
-    margin-left: 10px;
+    margin-right: 5px;
 }
 
 .username{
     font-size: 18px;
-    margin-left: 10px;
+    margin-right: 70px;
     cursor: pointer;
     color: white;
 }
 
 .topRight{
     flex: 4;
+    flex-direction: row;
     display: flex;
     align-items: center;
+    justify-content:flex-end;
 }

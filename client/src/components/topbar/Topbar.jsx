@@ -2,7 +2,6 @@ import "./topbar.css";
 import SearchBar from "../searchBar/searchBar";
 import { Person } from "@material-ui/icons"
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 export default function Topbar({fetchSearchResults}) {
     // axios
