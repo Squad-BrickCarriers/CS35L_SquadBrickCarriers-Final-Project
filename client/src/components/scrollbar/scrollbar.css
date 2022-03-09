@@ -1,0 +1,7 @@
+.scrollbar{
+    flex: 1.5;
+}
+
+.-webkit.scrollbar{
+    width: 10px;
+}
