@@ -6,7 +6,7 @@
 Treehole is a web-based **anonymous** social space where users can post anything they want to disclose and receive likes and comments for their posts.
 
 [Getting started](#getting-started) •
-[Roadmap](#roadmap) •
+[Documents](#documents) •
 [Credit](#credit) 
 
 </div>
@@ -48,7 +48,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory client/ **and** server/, you should run:
+In the project directory client/ **and** server/, you can run terminal commands:
 
 ### `npm install` 
 Install dependencies.
@@ -120,14 +120,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 </br>
 
-# Roadmap
+# Documents
 
 - <p style="text-align:left;">
     
     [Design Board on Miro](https://miro.com/app/board/uXjVOP-hrbQ=/?invite_link_id=498338953626)
-    <span style="float:right;">
+    <span style="float:right">
         (documents included)
     </span>
+
+- [Presentation Slide](https://docs.google.com/presentation/d/1vys0ncGv7w9CQ82dOWoibrLCnpKkCWSWFj8tCSvryEw/edit?usp=sharing)
 </p>
 </br>
 
