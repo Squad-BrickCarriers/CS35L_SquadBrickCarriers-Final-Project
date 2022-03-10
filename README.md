@@ -52,8 +52,20 @@ We found many communications online during covid were not **sincere**. We want t
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+In the project directory '/server', you can connect to the MongoDB server,
 
-In the project directories '/client' **and** '/server', you can run terminal commands:
+cd to server directory, and then run these </br>commands: </br></br>
+    
+ ### `export Brick_jwtPrivateKey=helloworld`
+Apply the Private Key.
+  
+ ### `npm install`
+Install Dependencies.
+    
+ ### `npm start`
+ Connect to Database.
+
+In the project directory '/client', you can run terminal commands:
 
 ### `npm install` 
 Install dependencies.
