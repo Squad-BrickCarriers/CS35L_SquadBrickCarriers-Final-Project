@@ -5,18 +5,15 @@ const { Post, postValidation } = require('../models/Post');
 const mongoose = require('mongoose');
 const auth = require('../middleware/auth')
 
-// TODO:    1. add status code
-//          2. complete error handling
-
 // Get all posts
 // req: None
 // res: return all posts to '/' in the order of posted time
 router.get('/getall', async (req, res) => {
     try {
         const posts = await Post.find().sort('-postdate').populate('author', 'name');
-        res.json(posts);
+        res.status(200).json(posts);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 })
 
@@ -26,9 +23,9 @@ router.get('/getall', async (req, res) => {
 router.get('/rank', async (req, res) => {
     try {
         const posts = await Post.find().sort('-likes').populate('author', 'name');
-        res.json(posts);
+        res.status(200).json(posts);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 })
 
@@ -41,12 +38,11 @@ router.get('/search', async (req, res) => {
         let keyword = req.query.keyword;
         const posts = await Post.find({ description: { $regex: RegExp(keyword), $options: 'i' } })
             .sort('-postdate').populate('author', 'name');
-        res.json(posts);
+        res.status(200).json(posts);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 })
-
 
 // Select a post
 // req: require postId in the parameter
@@ -54,14 +50,13 @@ router.get('/search', async (req, res) => {
 router.get('/:postId', async (req, res) => {
     try {
         const post = await Post.findById(req.params.postId).populate('author', 'name');
-        res.json(post);
+        res.status(200).json(post);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 })
 
-
-// Like/Unlike a post
+// Like/Dislike a post
 // req: require postId in the parameter and the id in the body
 // res: return the selected post with likes and liked_users updated
 router.patch('/:postId/like', auth, async (req, res) => {
@@ -84,13 +79,13 @@ router.patch('/:postId/like', auth, async (req, res) => {
         } else {
             post.liked_users.push(userid);
             post.likes++;
-            console.log("like succeeds")
+            // console.log("like succeeds")
         }
 
         const savedPost = await post.save();
-        res.json(savedPost);
+        res.status(200).json(savedPost);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
     // try{
     //     console.log(req.body.username);
@@ -122,13 +117,11 @@ router.get('/:postId/check-like', async (req, res) => {
                 break;
             }
         }
-        res.send(existed);
+        res.status(200).send(existed);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 });
-
-
 
 // Add a post
 // req: require author(objectId), description(string), likes(integer), 
@@ -148,9 +141,9 @@ router.post('/newpost', auth, async (req, res) => {
 
     try {
         const savedPost = await post.save();
-        res.json(savedPost);
+        res.status(200).json(savedPost);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 })
 
@@ -160,12 +153,10 @@ router.post('/newpost', auth, async (req, res) => {
 router.delete('/:postId', async (req, res) => {
     try {
         const removedPost = await Post.deleteOne({ _id: req.params.postId })
-        res.json(removedPost);
+        res.status(200).json(removedPost);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 })
-
-
 
 module.exports = router;

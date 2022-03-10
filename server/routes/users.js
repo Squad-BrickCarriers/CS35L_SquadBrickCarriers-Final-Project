@@ -8,29 +8,27 @@ const router = express.Router();
 const { User, userValidation } = require('../models/User');
 const mongoose = require('mongoose');
 
-// TODO:    1. add status code
-//          2. complete error handling
 
 // Get all users
 router.get('/', async (req, res) => {
     try {
         const users = await User.find();
-        res.json(users);
+        res.status(200).json(users);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 })
 
 // Select a user, first verify the token, and then return the information of current user
 router.get('/me', auth, async (req, res) => {
     const user = await User.findById(req.User._id).select('-password');
-    res.send(user);
+    res.status(200).send(user);
 })
 
 // Add a user， req needs name, email, and password, return the _id, name, and email of the new user. Also it sets the x-auth-token header
 router.post('/signup', async (req, res) => {
     const { error } = userValidation(req.body);
-    if (error) return res.status(402).send(error.details[0].message);
+    if (error) return res.status(400).send(error.details[0].message);
 
     let user = await User.findOne({ email: req.body.email });
     if (user) return res.status(401).send('User already existed.');
@@ -43,10 +41,11 @@ router.post('/signup', async (req, res) => {
     try {
         const savedUser = await user.save();
         const token = jwt.sign({ _id: user._id }, config.get('jwtPrivateKey'));
-        res.header('x-auth-token', token)
-            .send(_.pick(savedUser, ['_id', 'name', 'email']));
+        res.status(200)
+           .header('x-auth-token', token)
+           .send(_.pick(savedUser, ['_id', 'name', 'email']));
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 })
 
@@ -54,9 +53,9 @@ router.post('/signup', async (req, res) => {
 router.delete('/:userId', async (req, res) => {
     try {
         const removedUser = await User.deleteOne({ _id: req.params.userId })
-        res.json(removedUser);
+        res.status(200).json(removedUser);
     } catch (err) {
-        res.json({ message: err });
+        res.status(400).json({ message: err });
     }
 })
 

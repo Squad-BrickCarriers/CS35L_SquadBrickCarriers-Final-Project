@@ -1,4 +1,3 @@
-// use when logging in
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -8,8 +7,6 @@ const router = express.Router();
 const Joi = require('joi-oid');
 const { User } = require('../models/User');
 
-
-//sign in method
 
 const validation = user => {
     const schema = Joi.object({
@@ -36,7 +33,5 @@ router.post('/login', async (req, res) => {
     
     res.header('x-auth-token', token).send({token, name});
 });
-
-
 
 module.exports = router;
