@@ -9,19 +9,18 @@ export default function Share(){
 
     
     useEffect(() => {
-    const sendGetRequest = async () => {
-        try {
-            const res = await axios.get("http://localhost:8000/users/me", { headers: {'x-auth-token': localStorage.getItem("token"), 'max_request_header_size': '10000'} });
-            setUser(res.data);
+    axios
+    .get("http://localhost:8000/users/me", { headers: {'x-auth-token': localStorage.getItem("token"), 'max_request_header_size': '10000'} })
+    .then((res) => {
+        setUser(res.data);
             // localStorage.setItem("username", username)
             
             // console.log(user.data);
-        } catch (err) {
-            // Handle Error Here
-            console.error(err);
-        }
-    };
-    sendGetRequest();
+    })
+    .catch((err) => {
+        // Handle Error Here
+        console.error(err);
+    })
 }, []);
 
 
@@ -57,7 +56,7 @@ export default function Share(){
       }
 
     return(
-        <body>
+        // <body>
             <form onSubmit={submitHandler} className="share">
                 <div className="shareWrapper">
                     <div className="shareTop">
@@ -84,6 +83,6 @@ export default function Share(){
                     </div>
                 </div>
             </form>
-        </body>
+        // </body>
     )
 }
