@@ -54,7 +54,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 In the project directory '/server', you can connect to the MongoDB server,
 
-cd to server directory, and then run these </br>commands: </br></br>
+cd to server directory, and then run these commands:
     
  ### `export Brick_jwtPrivateKey=helloworld`
 Apply the Private Key.
