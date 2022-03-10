@@ -52,7 +52,7 @@ We found many communications online during covid were not **sincere**. We want t
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-In the project directory '/server', you can connect to the MongoDB server,
+In the project directory '/server', you can connect to the MongoDB server:
 
 cd to server directory, and then run these commands:
     
@@ -65,7 +65,7 @@ Install Dependencies.
  ### `npm start`
  Connect to Database.
 
-In the project directory '/client', you can run terminal commands:
+Open a new terminal. In the project directory '/client', you can run terminal commands:
 
 ### `npm install` 
 Install dependencies.
@@ -160,7 +160,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     - [@Wenshu-Zhang](https://github.com/Wenshu-Zhang)
 
 ### Known Issues:
-    - Due to performance issues, the app may exhibit unexpected behavior upon very frequent user-app interactions in a short time.
+- Due to performance issues, the app may exhibit unexpected behavior upon very frequent user-app interactions in a short time.
 
 ### Reference:
 - https://youtu.be/zM93yZ_8SvE
