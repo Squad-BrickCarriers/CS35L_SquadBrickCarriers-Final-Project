@@ -57,7 +57,7 @@ export default function Share(){
       }
 
     return(
-        <body>
+        // <body>
             <form onSubmit={submitHandler} className="share">
                 <div className="shareWrapper">
                     <div className="shareTop">
@@ -84,6 +84,6 @@ export default function Share(){
                     </div>
                 </div>
             </form>
-        </body>
+        // </body>
     )
 }

@@ -61,7 +61,7 @@ export default function Login() {
 
     return (
 
-        <body>
+        // <body>
             <div className="login">
                 <div className="loginWrapper">
                     <div className="loginLeft">
@@ -116,6 +116,6 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-        </body>
+        // </body>
     );
 }
