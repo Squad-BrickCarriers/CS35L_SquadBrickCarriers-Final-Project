@@ -159,6 +159,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     - [@lelandjin](https://github.com/LelandJin)
     - [@Wenshu-Zhang](https://github.com/Wenshu-Zhang)
 
+### Known Issues:
+    - Due to performance issues, the app may exhibit unexpected behavior upon very frequent user-app interactions in a short time.
+
 ### Reference:
 - https://youtu.be/zM93yZ_8SvE
 - https://stackoverflow.com/questions/50780983/how-can-i-rename-index-html-in-a-create-react-app-project
