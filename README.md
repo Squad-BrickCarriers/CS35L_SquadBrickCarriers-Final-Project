@@ -67,7 +67,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 First, navigate to the directory where you want to save the app, and run in the terminal:
-### `git clone https://github.com/Squad-BrickCarriers/CS35L_SquadBrickCarriers-Final-Project.git`
+> git clone https://github.com/Squad-BrickCarriers/CS35L_SquadBrickCarriers-Final-Project.git
 Get a local copy of the repo
 
 Then, enter the folder by running:
