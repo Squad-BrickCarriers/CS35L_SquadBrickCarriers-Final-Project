@@ -73,30 +73,41 @@ git clone https://github.com/Squad-BrickCarriers/CS35L_SquadBrickCarriers-Final-
 Get a local copy of the repo
 
 Then, enter the folder by running:
-### `cd CS35L_SquadBrickCarriers-Final-Project`
+```bash
+cd CS35L_SquadBrickCarriers-Final-Project
+```
 
 In the project directory '/server', you can connect to the MongoDB server:
-
-### `cd server`
+```bash
+cd server
+```
 and then run these commands:
-    
- ### `export Brick_jwtPrivateKey=helloworld`
+```bash
+export Brick_jwtPrivateKey=helloworld
+```
 Apply the Private Key.
-  
- ### `npm install`
+```bash
+npm install
+```
 Install Dependencies.
     
- ### `npm start`
+```bash
+npm start
+```
  Connect to Database.
 
 Open a new terminal. In the project directory '/client', you can connect to the frontend:
-### `cd client`
+```bash
+cd client
+```
 and then run these commands:
-
-### `npm install` 
+```bash
+npm install
+```
 Install dependencies.
-
-### `npm start` 
+```bash
+npm start
+```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
