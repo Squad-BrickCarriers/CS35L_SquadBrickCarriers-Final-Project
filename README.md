@@ -21,6 +21,20 @@
 </p>
 
 - <p style="text-align:left;">
+    Creating a new post:
+    <span style="float:right;">
+        share your ideas
+    </span>
+</p>
+
+- <p style="text-align:left;">
+    Making the new post anonymous:
+    <span style="float:right;">
+        get the option by clicking on a checkbox
+    </span>
+</p>
+
+- <p style="text-align:left;">
     Ranking List:
     <span style="float:right;">
         a collection of most liked posts
@@ -52,9 +66,17 @@ We found many communications online during covid were not **sincere**. We want t
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+First, navigate to the directory where you want to save the app, and run in the terminal:
+### `git clone https://github.com/Squad-BrickCarriers/CS35L_SquadBrickCarriers-Final-Project.git`
+Get a local copy of the repo
+
+Then, enter the folder by running:
+### `cd CS35L_SquadBrickCarriers-Final-Project`
+
 In the project directory '/server', you can connect to the MongoDB server:
 
-cd to server directory, and then run these commands:
+### `cd server`
+and then run these commands:
     
  ### `export Brick_jwtPrivateKey=helloworld`
 Apply the Private Key.
@@ -65,7 +87,9 @@ Install Dependencies.
  ### `npm start`
  Connect to Database.
 
-Open a new terminal. In the project directory '/client', you can run terminal commands:
+Open a new terminal. In the project directory '/client', you can connect to the frontend:
+### `cd client`
+and then run these commands:
 
 ### `npm install` 
 Install dependencies.
