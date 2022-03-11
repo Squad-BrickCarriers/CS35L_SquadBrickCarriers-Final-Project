@@ -154,7 +154,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## Developers
 - ### Backend:
     - [@hanchen-huang](https://github.com/hanchen-huang)
-    - [@Yiwu-Yu](https://github.com/Liwu-Yu)
+    - [@Liwu-Yu](https://github.com/Liwu-Yu)
 - ### Frontend:
     - [@lelandjin](https://github.com/LelandJin)
     - [@Wenshu-Zhang](https://github.com/Wenshu-Zhang)
